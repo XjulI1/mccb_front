@@ -8,8 +8,8 @@ machine:
     version:
       6.10.0
 
- deployment:
-   production:
+deployment:
+  production:
     branch: master
     commands:
       - ./deploy.sh
