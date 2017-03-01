@@ -7,7 +7,7 @@ import router from './router';
 
 Vue.use(VueResource);
 
-window.BACK_URL = 'http://xavierjulien.fr:3456';
+window.BACK_URL = 'https://xavierjulien.fr:3456';
 
 /* eslint-disable no-new */
 new Vue({
