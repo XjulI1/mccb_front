@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" id="logo">
+    <img src="./assets/logo.png" id="logo" alt="mccb_logo">
     <router-view></router-view>
   </div>
 </template>
