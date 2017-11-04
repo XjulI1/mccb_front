@@ -6,7 +6,7 @@ machine:
   # Version of node to use
   node:
     version:
-      6.10.0
+      8.2.1
 
 deployment:
   production:
