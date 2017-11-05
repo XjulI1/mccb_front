@@ -9,7 +9,7 @@ module.exports = {
     const devServer = browser.globals.devServerURL;
 
     browser
-      .url(devServer+'/status')
+      .url(devServer+'/#/status')
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.status')
       .assert.containsText('h1', 'Servers status')
