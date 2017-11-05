@@ -7,8 +7,6 @@ import router from './router';
 
 Vue.use(VueResource);
 
-window.BACK_URL = 'https://api.xavierjulien.fr';
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

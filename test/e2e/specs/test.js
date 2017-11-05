@@ -9,10 +9,10 @@ module.exports = {
     const devServer = browser.globals.devServerURL;
 
     browser
-      .url(devServer)
+      .url(devServer+'/status')
       .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Futur space for mCcB')
+      .assert.elementPresent('.status')
+      .assert.containsText('h1', 'Servers status')
       .assert.elementCount('img', 1)
       .end();
   },
