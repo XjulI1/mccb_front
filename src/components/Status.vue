@@ -20,7 +20,7 @@
   import config from '../config';
 
   export default {
-    name: 'hello',
+    name: 'status',
     data() {
       return {
         msg: 'Servers status',
@@ -78,7 +78,12 @@
   }
 
   .middleware_status {
+    padding-top: 10px;
     font-size: 1.3em;
+  }
+
+  .status {
+    text-align: center;
   }
 
   #logo {

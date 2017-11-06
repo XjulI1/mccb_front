@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Status from 'components/Status';
-import App from 'App';
+import Main from 'components/Main';
 
 Vue.use(Router);
 
@@ -9,11 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'App',
-      component: App,
+      name: 'main',
+      component: Main,
     }, {
       path: '/status',
-      name: 'Status',
+      name: 'status',
       component: Status,
     },
   ],
