@@ -6,7 +6,7 @@ machine:
   # Version of node to use
   node:
     version:
-      8.2.1
+      10.4.1
 
 dependencies:
   pre:
