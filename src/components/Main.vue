@@ -5,19 +5,19 @@
 </template>
 
 <script>
-  export default {
-    name: 'main',
-    data() {
-      return {
-      };
-    },
+export default {
+  name: 'main',
+  data () {
+    return {
+    }
+  },
 
-    created() {
-    },
+  created () {
+  },
 
-    methods: {
-    },
-  };
+  methods: {
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
