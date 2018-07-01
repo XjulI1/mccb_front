@@ -1,7 +1,7 @@
-export default {
-  // MIDDLEWARE_URL: 'https://api.xavierjulien.fr',
-  // BACK_URL: 'https://lb.xavierjulien.fr'
+import dev from '@/config/dev'
+import prod from '@/config/prod'
 
-  MIDDLEWARE_URL: 'http://192.168.1.14:3456',
-  BACK_URL: 'http://192.168.1.14:3000'
+export default {
+  MIDDLEWARE_URL: (process.env.NODE_ENV === 'production') ? prod.MIDDLEWARE_URL : dev.MIDDLEWARE_URL,
+  BACK_URL: (process.env.NODE_ENV === 'production') ? prod.BACK_URL : dev.BACK_URL
 }
