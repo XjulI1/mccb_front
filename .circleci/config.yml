@@ -32,7 +32,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /tmp
       - run: yarn test:unit
 
   build:
