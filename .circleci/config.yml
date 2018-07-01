@@ -20,7 +20,7 @@ jobs:
           paths:
             - "node_modules"
       - run: yarn test:unit
-      - run: yarn build
+      - run: yarn build --mode production
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
