@@ -1,12 +1,16 @@
 version: 2
 
+defaults: &defaults
+  working_directory: /tmp/workspace
+  environment:
+    TZ: "/usr/share/zoneinfo/Europe/Paris"
+    NODE_ENV: test
+  docker:
+    - image: circleci/node:10.5.0-stretch-browsers
+
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10.5.0-stretch-browsers
-    environment:
-      TZ: "/usr/share/zoneinfo/Europe/Paris"
-      NODE_ENV: test
+  dependencies:
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -19,10 +23,52 @@ jobs:
           key: yarn-modules-{{ checksum "yarn.lock" }}
           paths:
             - "node_modules"
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - workspace
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - run: yarn test:unit
+
+  build:
+    <<: *defaults
+    environment:
+      NODE_ENV: production
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - run: yarn build --mode production
+
+  deploy:
+    <<: *defaults
+    environment:
+      NODE_ENV: production
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               scp -r -o StrictHostKeyChecking=no -P 2200 ./dist/** deploy@xavierjulien.fr:/volume2/web/mccb_ng/
             fi
+
+workflows:
+  version: 2
+
+  mccb_front:
+    jobs:
+      - dependencies
+      - test:
+          requires:
+            - dependencies
+      - build:
+          requires:
+            - test
+      - deploy:
+          requires:
+            - build
