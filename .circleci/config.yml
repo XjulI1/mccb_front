@@ -43,6 +43,10 @@ jobs:
       - attach_workspace:
           at: /tmp
       - run: yarn build --mode production
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - dist
 
   deploy:
     <<: *defaults
@@ -50,7 +54,7 @@ jobs:
       NODE_ENV: production
     steps:
       - attach_workspace:
-          at: /tmp
+          at: /tmp/workspace
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
