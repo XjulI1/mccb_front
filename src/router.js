@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/Main.vue'
-import Status from '@/components/Status.vue'
+import Main from '@/views/Main.vue'
+import Status from '@/views/Status.vue'
 
 Vue.use(Router)
 

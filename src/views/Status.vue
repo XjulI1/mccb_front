@@ -17,41 +17,41 @@
 </template>
 
 <script>
-import config from '@/config'
-import axios from 'axios'
+  import config from '@/config'
+  import axios from 'axios'
 
-export default {
-  name: 'status',
-  data () {
-    return {
-      msg: 'Servers status',
-      middleware_status: '',
-      api_status: ''
-    }
-  },
-
-  created () {
-    this.getMiddlewareStatus()
-    this.getAPIStatus()
-  },
-
-  methods: {
-    getMiddlewareStatus () {
-      axios.get(`${config.MIDDLEWARE_URL}/ping`).then((response) => {
-        this.middleware_status = response.status
-      }).catch((response) => {
-        this.middleware_status = response.status
-      })
+  export default {
+    name: 'status',
+    data () {
+      return {
+        msg: 'Servers status',
+        middleware_status: '',
+        api_status: ''
+      }
     },
-    getAPIStatus () {
-      axios.get(`${config.BACK_URL}`).then((response) => {
-        this.api_status = response.status
-      }).catch((response) => {
-        this.api_status = response.status
-      })
+
+    created () {
+      this.getMiddlewareStatus()
+      this.getAPIStatus()
+    },
+
+    methods: {
+      getMiddlewareStatus () {
+        axios.get(`${config.MIDDLEWARE_URL}/ping`).then((response) => {
+          this.middleware_status = response.status
+        }).catch((response) => {
+          this.middleware_status = response.status
+        })
+      },
+      getAPIStatus () {
+        axios.get(`${config.BACK_URL}`).then((response) => {
+          this.api_status = response.status
+        }).catch((response) => {
+          this.api_status = response.status
+        })
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

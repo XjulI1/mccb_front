@@ -1,9 +1,9 @@
 import {shallowMount} from '@vue/test-utils'
 
-import Status from '@/components/Status'
+import Status from '@/views/Status'
 
 describe('Status.vue', () => {
-  it('should render correct contents', () => {
+  test('should render correct contents', () => {
     const wrapper = shallowMount(Status)
 
     expect(wrapper.find('.status h1').text())
