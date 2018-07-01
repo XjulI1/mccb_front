@@ -1,14 +1,17 @@
 <template>
   <div class="home">
-    <navbar></navbar>
+    <account-header/>
+    <navbar/>
   </div>
 </template>
 
 <script>
   import Navbar from '../components/Navbar'
+  import AccountHeader from '../components/AccountHeader'
+
   export default {
     name: 'home',
-    components: {Navbar},
+    components: {AccountHeader, Navbar},
     data () {
       return {}
     },
