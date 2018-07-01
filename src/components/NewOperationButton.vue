@@ -23,7 +23,7 @@
 
 <style scoped>
   button {
-    width: 70px;
+    width: 28%;
     height: 50px;
     font-size: 1.3rem;
     line-height: 1.1rem;

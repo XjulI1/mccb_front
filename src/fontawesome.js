@@ -1,9 +1,14 @@
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faExchangeAlt, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faExchangeAlt, faPlus, faMoneyBillAlt, faCogs, faList} from '@fortawesome/free-solid-svg-icons'
 
 export default {
   load: function () {
-    library.add(faExchangeAlt)
-    library.add(faPlus)
+    library.add({
+      faExchangeAlt,
+      faPlus,
+      faMoneyBillAlt,
+      faCogs,
+      faList
+    })
   }
 }

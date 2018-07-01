@@ -1,12 +1,12 @@
 <template>
-  <button class="btn btn-success disabled new-operation-button" v-on:click="doTransfert">
-    <font-awesome-icon icon="exchange-alt" />
+  <button class="btn btn-info disabled new-operation-button" v-on:click="getMoney">
+    <font-awesome-icon icon="money-bill-alt" />
   </button>
 </template>
 
 <script>
   export default {
-    name: 'VirementButton',
+    name: 'RetraitButton',
     data () {
       return {}
     },
@@ -15,7 +15,7 @@
     },
 
     methods: {
-      doTransfert: function () {
+      getMoney: function () {
       }
     }
   }

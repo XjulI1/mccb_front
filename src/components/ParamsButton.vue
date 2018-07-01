@@ -1,12 +1,12 @@
 <template>
-  <button class="btn btn-success disabled new-operation-button" v-on:click="doTransfert">
-    <font-awesome-icon icon="exchange-alt" />
+  <button class="btn btn-danger disabled new-operation-button" v-on:click="changeParams">
+    <font-awesome-icon icon="cogs" />
   </button>
 </template>
 
 <script>
   export default {
-    name: 'VirementButton',
+    name: 'ParamsButton',
     data () {
       return {}
     },
@@ -15,7 +15,7 @@
     },
 
     methods: {
-      doTransfert: function () {
+      changeParams: function () {
       }
     }
   }

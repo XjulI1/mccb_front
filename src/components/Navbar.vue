@@ -1,17 +1,23 @@
 <template>
-  <div class="main-navbar btn-group" role="group">
+  <div class="btn-group main-navbar" role="group">
+    <all-account-button/>
     <virement-button/>
     <new-operation-button/>
+    <retrait-button/>
+    <params-button/>
   </div>
 </template>
 
 <script>
   import NewOperationButton from './NewOperationButton'
   import VirementButton from './VirementButton'
+  import RetraitButton from './RetraitButton'
+  import ParamsButton from './ParamsButton'
+  import AllAccountButton from './AllAccountButton'
 
   export default {
     name: 'navbar',
-    components: {VirementButton, NewOperationButton},
+    components: {AllAccountButton, ParamsButton, RetraitButton, VirementButton, NewOperationButton},
     data () {
       return {}
     },
@@ -31,5 +37,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    display: inline;
+    text-align: center;
   }
 </style>
