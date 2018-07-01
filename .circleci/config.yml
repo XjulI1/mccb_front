@@ -1,0 +1,39 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.5.0-stretch-browsers
+    environment:
+      TZ: "/usr/share/zoneinfo/Europe/Paris"
+      NODE_ENV: test
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - run: yarn test:unit
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./deploy.sh
+            fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#test:
+#  override:
+#    - yarn test:unit
+#
+
