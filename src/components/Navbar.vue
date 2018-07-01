@@ -9,11 +9,11 @@
 </template>
 
 <script>
-  import NewOperationButton from './NewOperationButton'
-  import VirementButton from './VirementButton'
-  import RetraitButton from './RetraitButton'
-  import ParamsButton from './ParamsButton'
-  import AllAccountButton from './AllAccountButton'
+  import NewOperationButton from './NavBar/NewOperationButton'
+  import VirementButton from './NavBar/VirementButton'
+  import RetraitButton from './NavBar/RetraitButton'
+  import ParamsButton from './NavBar/ParamsButton'
+  import AllAccountButton from './NavBar/AllAccountButton'
 
   export default {
     name: 'navbar',

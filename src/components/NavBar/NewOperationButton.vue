@@ -1,12 +1,12 @@
 <template>
-  <button class="btn btn-danger disabled new-operation-button" v-on:click="changeParams">
-    <font-awesome-icon icon="cogs" />
+  <button class="btn btn-primary disabled new-operation-button" v-on:click="addOperation">
+    <font-awesome-icon icon="plus" />
   </button>
 </template>
 
 <script>
   export default {
-    name: 'ParamsButton',
+    name: 'NewOperationButton',
     data () {
       return {}
     },
@@ -15,7 +15,7 @@
     },
 
     methods: {
-      changeParams: function () {
+      addOperation: function () {
       }
     }
   }
@@ -23,9 +23,9 @@
 
 <style scoped>
   button {
-    width: 18%;
+    width: 24%;
     height: 50px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.1rem;
     font-weight: 600;
   }
