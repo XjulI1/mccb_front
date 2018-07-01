@@ -1,12 +1,14 @@
 <template>
-  <div class="main">
-
+  <div class="home">
+    <navbar></navbar>
   </div>
 </template>
 
 <script>
+  import Navbar from '../components/Navbar'
   export default {
-    name: 'main',
+    name: 'home',
+    components: {Navbar},
     data () {
       return {}
     },
