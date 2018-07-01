@@ -14,9 +14,9 @@ jobs:
           command: yarn install
       - run: yarn test:unit
       - run:
-        name: Fix host authenticity for xavierjulien.fr
-        command: |
-          ssh-keyscan -H xavierjulien.fr >> ~/.ssh/known_hosts
+          name: Fix host authenticity for xavierjulien.fr
+          command: |
+            ssh-keyscan -H xavierjulien.fr >> ~/.ssh/known_hosts
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
