@@ -37,7 +37,7 @@
 
     methods: {
       getMiddlewareStatus () {
-        axios.get(`${config.MIDDLEWARE_URL}/ping`).then((response) => {
+        axios.get(`${config.API_URL}/ping`).then((response) => {
           this.middleware_status = response.status
         }).catch((response) => {
           this.middleware_status = response.status
