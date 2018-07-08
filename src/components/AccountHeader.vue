@@ -48,15 +48,18 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '@/global.scss';
+
   .account-header {
-    height: 80px;
+    height: $header-account-height;
     width: 100%;
-    background-color: lightgrey;
+    background-color: rgba(200, 200, 200, 0.9);
     position: fixed;
     top: 0;
     left: 0;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 10px;
+    z-index: 1000;
 
     .account-info {
       font-weight: bold;

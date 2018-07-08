@@ -40,8 +40,11 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+  @import '@/global.scss';
+
   .home {
-    margin-top: 80px;
+    margin-top: $header-account-height + 5;
+    margin-bottom: $navbar-height;
   }
 </style>

@@ -27,6 +27,5 @@
     height: 50px;
     font-size: 1.2rem;
     line-height: 1.1rem;
-    font-weight: 600;
   }
 </style>

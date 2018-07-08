@@ -29,9 +29,11 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '@/global.scss';
+
   .main-navbar {
-    height: 50px;
+    height: $navbar-height;
     width: 100%;
     background-color: lightgrey;
     position: fixed;
