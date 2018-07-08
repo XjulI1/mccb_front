@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {},
-    activeAccount: {}
+    activeAccount: {},
+    operationsOfActiveAccount: {}
   },
   getters: {
     // computed properties
@@ -20,6 +21,10 @@ export default new Vuex.Store({
 
     setActiveAccount (state, activeAccount) {
       state.activeAccount = activeAccount
+    },
+
+    setOperationsOfActiveAccount (state, operations) {
+      state.operationsOfActiveAccount = operations
     }
   },
   actions: {
@@ -34,6 +39,15 @@ export default new Vuex.Store({
       return axios.get(config.API_URL + '/api/Comptes/' + accountID)
         .then((response) => {
           context.commit('setActiveAccount', response.data)
+        })
+    },
+
+    fetchOperationsOfActiveAccount (context) {
+      let filter = {'where': {'IDcompte': this.state.activeAccount.IDcompte}, 'order': 'DateOp DESC', 'limit': 20}
+
+      return axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
+        .then((response) => {
+          context.commit('setOperationsOfActiveAccount', response.data)
         })
     }
   }

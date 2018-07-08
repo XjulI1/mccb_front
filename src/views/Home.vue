@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <account-header/>
+    <operation-list/>
     <navbar/>
   </div>
 </template>
@@ -9,15 +10,19 @@
   import Navbar from '../components/Navbar'
   import AccountHeader from '../components/AccountHeader'
   import {mapState} from 'vuex'
+  import OperationList from '../components/OperationList'
 
   export default {
     name: 'home',
-    components: {AccountHeader, Navbar},
+    components: {OperationList, AccountHeader, Navbar},
 
     beforeMount () {
       this.$store.dispatch('fetchUser', 1)
         .then(() => {
           return this.$store.dispatch('fetchActiveAccount', this.$store.state.user.favoris)
+        })
+        .then(() => {
+          this.$store.dispatch('fetchOperationsOfActiveAccount')
         })
     },
 
