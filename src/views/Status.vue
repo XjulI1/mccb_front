@@ -31,20 +31,12 @@
     },
 
     created () {
-      this.getMiddlewareStatus()
       this.getAPIStatus()
     },
 
     methods: {
-      getMiddlewareStatus () {
-        axios.get(`${config.API_URL}/ping`).then((response) => {
-          this.middleware_status = response.status
-        }).catch((response) => {
-          this.middleware_status = response.status
-        })
-      },
       getAPIStatus () {
-        axios.get(`${config.BACK_URL}`).then((response) => {
+        axios.get(`${config.API_URL}/ping`).then((response) => {
           this.api_status = response.status
         }).catch((response) => {
           this.api_status = response.status
