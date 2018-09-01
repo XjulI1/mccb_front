@@ -43,7 +43,7 @@ export default new Vuex.Store({
     },
 
     fetchOperationsOfActiveAccount (context) {
-      let filter = {'where': {'IDcompte': this.state.activeAccount.IDcompte}, 'order': 'DateOp DESC', 'limit': 20}
+      let filter = { 'where': { 'IDcompte': this.state.activeAccount.IDcompte }, 'order': 'DateOp DESC', 'limit': 20 }
 
       return axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
         .then((response) => {

@@ -9,12 +9,12 @@
 <script>
   import Navbar from '../components/Navbar'
   import AccountHeader from '../components/AccountHeader'
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex'
   import OperationList from '../components/OperationList'
 
   export default {
     name: 'home',
-    components: {OperationList, AccountHeader, Navbar},
+    components: { OperationList, AccountHeader, Navbar },
 
     beforeMount () {
       this.$store.dispatch('fetchUser', 1)

@@ -6,11 +6,11 @@
 
 <script>
   import Operation from './OperationList/Operation'
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'OperationList',
-    components: {Operation},
+    components: { Operation },
 
     computed: mapState(['operationsOfActiveAccount']),
 

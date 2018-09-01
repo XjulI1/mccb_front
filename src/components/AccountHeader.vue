@@ -24,11 +24,11 @@
 <script>
   import SearchButton from './AccountHeader/SearchButton'
   import ChartsButton from './AccountHeader/ChartsButton'
-  import {mapState} from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'AccountHeader',
-    components: {ChartsButton, SearchButton},
+    components: { ChartsButton, SearchButton },
 
     computed: mapState(['activeAccount']),
 

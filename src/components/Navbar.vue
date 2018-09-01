@@ -17,7 +17,7 @@
 
   export default {
     name: 'navbar',
-    components: {AllAccountButton, ParamsButton, RetraitButton, VirementButton, NewOperationButton},
+    components: { AllAccountButton, ParamsButton, RetraitButton, VirementButton, NewOperationButton },
     data () {
       return {}
     },
