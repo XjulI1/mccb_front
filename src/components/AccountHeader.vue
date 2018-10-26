@@ -7,10 +7,11 @@
         </div>
         <div class="col-6 account-info">
           <div>
-            {{activeAccount.NomCompte}}
+            {{$store.state.activeAccount.NomCompte}}
           </div>
           <div>
-            {{PLANNED_AMOUNT}} {{CURRENCY}} - [{{CURRENT_AMOUNT}} {{CURRENCY}}]
+            {{$store.state.activeAccount.soldeNotChecked}} {{CURRENCY}} - [{{$store.state.activeAccount.soldeChecked}}
+            {{CURRENCY}}]
           </div>
         </div>
         <div class="col-3">
@@ -24,19 +25,14 @@
 <script>
   import SearchButton from './AccountHeader/SearchButton'
   import ChartsButton from './AccountHeader/ChartsButton'
-  import { mapState } from 'vuex'
 
   export default {
     name: 'AccountHeader',
     components: { ChartsButton, SearchButton },
 
-    computed: mapState(['activeAccount']),
-
     data () {
       return {
-        PLANNED_AMOUNT: 100,
-        CURRENCY: '€',
-        CURRENT_AMOUNT: 200
+        CURRENCY: '€'
       }
     },
 

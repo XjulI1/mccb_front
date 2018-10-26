@@ -23,6 +23,7 @@
         })
         .then(() => {
           this.$store.dispatch('fetchOperationsOfActiveAccount')
+          this.$store.dispatch('fetchSumForACompte')
         })
     },
 

@@ -25,6 +25,16 @@ export default new Vuex.Store({
 
     setOperationsOfActiveAccount (state, operations) {
       state.operationsOfActiveAccount = operations
+    },
+
+    setCheckedSolde (state, TotalChecked) {
+      Vue.set(state.activeAccount, 'soldeChecked', state.activeAccount.solde + Math.round(TotalChecked * 100) / 100)
+    },
+
+    setNotCheckedSolde (state, TotalNotChecked) {
+      TotalNotChecked = parseFloat(TotalNotChecked || 0)
+
+      Vue.set(state.activeAccount, 'soldeNotChecked', state.activeAccount.soldeChecked + Math.round(TotalNotChecked * 100) / 100)
     }
   },
   actions: {
@@ -45,9 +55,17 @@ export default new Vuex.Store({
     fetchOperationsOfActiveAccount (context) {
       let filter = { 'where': { 'IDcompte': this.state.activeAccount.IDcompte }, 'order': 'DateOp DESC', 'limit': 20 }
 
-      return axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
+      axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
         .then((response) => {
           context.commit('setOperationsOfActiveAccount', response.data)
+        })
+    },
+
+    fetchSumForACompte (context) {
+      axios.get(config.API_URL + '/api/Operations/sumForACompte?id=' + this.state.activeAccount.IDcompte)
+        .then((response) => {
+          context.commit('setCheckedSolde', response.data.results.TotalChecked)
+          context.commit('setNotCheckedSolde', response.data.results.TotalNotChecked)
         })
     }
   }
