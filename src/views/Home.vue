@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <account-header/>
-    <operation-list/>
-    <navbar/>
+    <navbar class="navbar"/>
+    <operation-list class="operation-list"/>
   </div>
 </template>
 
@@ -46,6 +46,25 @@
 
   .home {
     margin-top: $header-account-height + 5;
-    margin-bottom: $navbar-height;
+  }
+
+  @media screen and (max-width: 768px) {
+    .home {
+      margin-bottom: $navbar-height;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .home {
+      display: flex;
+    }
+
+    .operation-list {
+      width: 70%
+    }
+
+    .navbar {
+      width: 30%;
+    }
   }
 </style>

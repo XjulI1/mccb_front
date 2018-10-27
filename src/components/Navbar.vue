@@ -33,13 +33,18 @@
   @import '@/global.scss';
 
   .main-navbar {
-    height: $navbar-height;
-    width: 100%;
-    background-color: lightgrey;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: inline;
-    text-align: center;
+    padding: 0;
+
+    @media screen and (max-width: 768px) {
+      height: $navbar-height;
+      width: 100%;
+      background-color: lightgrey;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      display: inline;
+      text-align: center;
+      z-index: 10;
+    }
   }
 </style>
