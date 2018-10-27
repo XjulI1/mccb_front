@@ -9,10 +9,33 @@ export default new Vuex.Store({
   state: {
     user: {},
     activeAccount: {},
-    operationsOfActiveAccount: {}
+    operationsOfActiveAccount: [],
+    accountList: []
   },
   getters: {
-    // computed properties
+    bloquedCompte (state) {
+      return state.accountList.filter((account) => {
+        if (account.bloque) {
+          return account
+        }
+      })
+    },
+
+    availableCompte (state) {
+      return state.accountList.filter((account) => {
+        if (!account.bloque && !account.porte_feuille) {
+          return account
+        }
+      })
+    },
+
+    porteFeuilleCompte (state) {
+      return state.accountList.filter((account) => {
+        if (account.porte_feuille) {
+          return account
+        }
+      })
+    }
   },
   mutations: {
     setUser (state, user) {
@@ -35,6 +58,10 @@ export default new Vuex.Store({
       TotalNotChecked = parseFloat(TotalNotChecked || 0)
 
       Vue.set(state.activeAccount, 'soldeNotChecked', state.activeAccount.soldeChecked + Math.round(TotalNotChecked * 100) / 100)
+    },
+
+    setAccountList (state, accountList) {
+      state.accountList = accountList
     }
   },
   actions: {
@@ -46,9 +73,21 @@ export default new Vuex.Store({
     },
 
     fetchActiveAccount (context, accountID) {
-      return axios.get(config.API_URL + '/api/Comptes/' + accountID)
+      axios.get(config.API_URL + '/api/Comptes/' + accountID)
         .then((response) => {
           context.commit('setActiveAccount', response.data)
+
+          this.dispatch('fetchOperationsOfActiveAccount')
+          this.dispatch('fetchSumForACompte')
+        })
+    },
+
+    fetchAccountList (context) {
+      let filter = { where: { IDuser: this.state.user.id, visible: true } }
+
+      axios.get(config.API_URL + '/api/Comptes?filter=' + JSON.stringify(filter))
+        .then((response) => {
+          context.commit('setAccountList', response.data)
         })
     },
 
