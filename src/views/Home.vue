@@ -60,11 +60,11 @@
     }
 
     .operation-list {
-      width: 70%
+      width: 65%
     }
 
     .navbar {
-      width: 30%;
+      width: 35%;
     }
   }
 </style>
