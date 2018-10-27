@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <account-header/>
-    <navbar class="navbar"/>
+    <div class="left-panel">
+      <compte-list class="compte-list"/>
+      <navbar class="navbar"/>
+    </div>
     <operation-list class="operation-list"/>
   </div>
 </template>
@@ -11,19 +14,16 @@
   import AccountHeader from '../components/AccountHeader'
   import { mapState } from 'vuex'
   import OperationList from '../components/OperationList'
+  import CompteList from '../components/CompteList'
 
   export default {
     name: 'home',
-    components: { OperationList, AccountHeader, Navbar },
+    components: { CompteList, OperationList, AccountHeader, Navbar },
 
-    beforeMount () {
+    beforeCreate () {
       this.$store.dispatch('fetchUser', 1)
         .then(() => {
-          return this.$store.dispatch('fetchActiveAccount', this.$store.state.user.favoris)
-        })
-        .then(() => {
-          this.$store.dispatch('fetchOperationsOfActiveAccount')
-          this.$store.dispatch('fetchSumForACompte')
+          this.$store.dispatch('fetchActiveAccount', this.$store.state.user.favoris)
         })
     },
 
@@ -52,6 +52,10 @@
     .home {
       margin-bottom: $navbar-height;
     }
+
+    .compte-list {
+      display: none;
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -63,8 +67,11 @@
       width: 65%
     }
 
-    .navbar {
+    .left-panel {
       width: 35%;
+    }
+
+    .compte-list {
     }
   }
 </style>
