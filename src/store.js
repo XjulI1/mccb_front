@@ -62,6 +62,19 @@ export default new Vuex.Store({
 
     setAccountList (state, accountList) {
       state.accountList = accountList
+    },
+
+    setAllCompteForUser (state, sumList) {
+      state.accountList.forEach((account, index) => {
+        let sum = sumList.filter(sum => sum.IDCompte === account.IDcompte)
+
+        if (sum[0]) {
+          state.accountList[index].solde += sum[0].TotalChecked
+          state.accountList[index].solde += sum[0].TotalNotChecked || 0
+
+          state.accountList[index].solde = Math.round(state.accountList[index].solde * 100) / 100
+        }
+      })
     }
   },
   actions: {
@@ -83,11 +96,13 @@ export default new Vuex.Store({
     },
 
     fetchAccountList (context) {
-      let filter = { where: { IDuser: this.state.user.id, visible: true } }
+      let filter = { where: { IDuser: this.state.user.id, visible: true }, order: 'NomCompte ASC' }
 
       axios.get(config.API_URL + '/api/Comptes?filter=' + JSON.stringify(filter))
         .then((response) => {
           context.commit('setAccountList', response.data)
+
+          this.dispatch('sumAllCompteForUser')
         })
     },
 
@@ -105,6 +120,13 @@ export default new Vuex.Store({
         .then((response) => {
           context.commit('setCheckedSolde', response.data.results.TotalChecked)
           context.commit('setNotCheckedSolde', response.data.results.TotalNotChecked)
+        })
+    },
+
+    sumAllCompteForUser (context) {
+      axios.get(config.API_URL + '/api/Operations/sumAllCompteForUser?userID=' + this.state.user.id)
+        .then((response) => {
+          context.commit('setAllCompteForUser', response.data.results)
         })
     }
   }
