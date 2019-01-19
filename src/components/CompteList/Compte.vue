@@ -1,5 +1,5 @@
 <template>
-  <div class="account-informations container">
+  <div class="account-informations container" @click="getAccountDetails">
     <div class="row">
       <div class="col-7" :class="classBoldTitle">
         {{accountInformations.NomCompte}}
@@ -26,7 +26,11 @@
     created () {
     },
 
-    methods: {}
+    methods: {
+      getAccountDetails () {
+        this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
+      }
+    }
   }
 </script>
 

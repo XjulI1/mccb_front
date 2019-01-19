@@ -67,13 +67,13 @@ export default new Vuex.Store({
     },
 
     setCheckedSolde (state, TotalChecked) {
-      Vue.set(state.activeAccount, 'soldeChecked', state.activeAccount.solde + Math.round(TotalChecked * 100) / 100)
+      Vue.set(state.activeAccount, 'soldeChecked', Math.round((state.activeAccount.solde + TotalChecked) * 100) / 100)
     },
 
     setNotCheckedSolde (state, TotalNotChecked) {
       TotalNotChecked = parseFloat(TotalNotChecked || 0)
 
-      Vue.set(state.activeAccount, 'soldeNotChecked', state.activeAccount.soldeChecked + Math.round(TotalNotChecked * 100) / 100)
+      Vue.set(state.activeAccount, 'soldeNotChecked', Math.round((state.activeAccount.soldeChecked + TotalNotChecked) * 100) / 100)
     },
 
     setAccountList (state, accountList) {
@@ -94,6 +94,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    initialState () {
+      this.dispatch('fetchUser', 1)
+        .then(() => {
+          this.dispatch('fetchActiveAccount', this.state.user.favoris)
+        })
+    },
+
     fetchUser (context, userID) {
       return axios.get(config.API_URL + '/api/users/' + userID)
         .then((response) => {

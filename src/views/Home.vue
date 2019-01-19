@@ -20,13 +20,6 @@
     name: 'home',
     components: { CompteList, OperationList, AccountHeader, Navbar },
 
-    beforeCreate () {
-      this.$store.dispatch('fetchUser', 1)
-        .then(() => {
-          this.$store.dispatch('fetchActiveAccount', this.$store.state.user.favoris)
-        })
-    },
-
     data () {
       return {}
     },

@@ -11,7 +11,6 @@
     <hr>
     <compte :account-informations="totalAccounts.available" :boldTitle="cssClasses.compteBoldTitle.boldTitle"/>
     <compte :account-informations="totalAccounts.all" :boldTitle="cssClasses.compteBoldTitle.boldTitle"/>
-    <hr>
   </div>
 </template>
 
