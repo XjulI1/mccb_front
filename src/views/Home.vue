@@ -48,7 +48,7 @@
     margin-top: $header-account-height + 5;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     .home {
       margin-bottom: $navbar-height;
     }
@@ -64,11 +64,13 @@
     }
 
     .operation-list {
-      width: 65%
+      width: 65%;
+      margin-left: 35%;
     }
 
     .left-panel {
       width: 35%;
+      position: fixed;
     }
 
     .compte-list {
