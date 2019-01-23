@@ -9,8 +9,10 @@
     <compte :account-informations="account" v-for="account in $store.getters.porteFeuilleCompte"
             v-bind:key="'account-' + account.IDcompte"/>
     <hr>
-    <compte :account-informations="totalAccounts.available" :boldTitle="cssClasses.compteBoldTitle.boldTitle"/>
-    <compte :account-informations="totalAccounts.all" :boldTitle="cssClasses.compteBoldTitle.boldTitle"/>
+    <compte :account-informations="totalAccounts.available" :boldTitle="cssClasses.compteBoldTitle.boldTitle"
+            :disable-click="true"/>
+    <compte :account-informations="totalAccounts.all" :boldTitle="cssClasses.compteBoldTitle.boldTitle"
+            :disable-click="true"/>
   </div>
 </template>
 

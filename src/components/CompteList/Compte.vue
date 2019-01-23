@@ -1,5 +1,5 @@
 <template>
-  <div class="account-informations container" @click="getAccountDetails">
+  <div class="account-informations container" :class="classPointer" @click="getAccountDetails">
     <div class="row">
       <div class="col-7" :class="classBoldTitle">
         {{accountInformations.NomCompte}}
@@ -15,11 +15,12 @@
   export default {
     name: 'Compte',
 
-    props: ['accountInformations', 'boldTitle'],
+    props: ['accountInformations', 'boldTitle', 'disableClick'],
 
     data () {
       return {
-        classBoldTitle: this.boldTitle ? 'bold-title' : ''
+        classBoldTitle: this.boldTitle ? 'bold-title' : '',
+        classPointer: this.disableClick ? '' : 'cursor-pointer'
       }
     },
 
@@ -28,7 +29,9 @@
 
     methods: {
       getAccountDetails () {
-        this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
+        if (!this.disableClick) {
+          this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
+        }
       }
     }
   }
@@ -37,6 +40,9 @@
 <style scoped>
   .account-informations {
     padding: 8px;
+  }
+
+  .cursor-pointer {
     cursor: pointer;
   }
 
