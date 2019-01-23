@@ -39,16 +39,16 @@ export default new Vuex.Store({
     },
 
     totalAvailable (state, getters) {
-      return getters.availableCompte.reduce((acc, account) => {
+      let availableAndPorteFeuilleAccounts = getters.availableCompte.concat(getters.porteFeuilleCompte)
+
+      return availableAndPorteFeuilleAccounts.reduce((acc, account) => {
         acc += account.solde
         return Math.round(acc * 100) / 100
       }, 0)
     },
 
     totalGlobal (state, getters) {
-      let bloquedAndPorteFeuilleAccounts = getters.bloquedCompte.concat(getters.porteFeuilleCompte)
-
-      return bloquedAndPorteFeuilleAccounts.reduce((acc, account) => {
+      return getters.bloquedCompte.reduce((acc, account) => {
         acc += account.solde
         return Math.round(acc * 100) / 100
       }, getters.totalAvailable)
