@@ -145,7 +145,11 @@ export default new Vuex.Store({
     },
 
     fetchOperationsOfActiveAccount (context) {
-      let filter = { 'where': { 'IDcompte': this.state.activeAccount.IDcompte }, 'order': 'CheckOp ASC, DateOp DESC', 'limit': 20 }
+      let filter = {
+        'where': { 'IDcompte': this.state.activeAccount.IDcompte },
+        'order': 'CheckOp ASC, DateOp DESC',
+        'limit': 20
+      }
 
       axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
         .then((response) => {
@@ -170,10 +174,16 @@ export default new Vuex.Store({
 
     updateOperation (context, operation) {
       axios.patch(config.API_URL + '/api/Operations', operation)
+        .then(() => {
+          this.dispatch('fetchActiveAccount', operation.IDcompte)
+        })
     },
 
-    deleteOperation (context, operationID) {
-      axios.delete(config.API_URL + '/api/Operations/' + operationID)
+    deleteOperation (context, operation) {
+      axios.delete(config.API_URL + '/api/Operations/' + operation.IDop)
+        .then(() => {
+          this.dispatch('fetchActiveAccount', operation.IDcompte)
+        })
     },
 
     fetchCategoryList (context) {

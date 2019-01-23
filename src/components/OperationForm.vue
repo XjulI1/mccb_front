@@ -74,11 +74,27 @@
       },
 
       updateOperation () {
-        this.$store.dispatch('updateOperation', this.operation)
+        this.$store.dispatch('updateOperation', Object.assign({}, this.operation))
+
+        if (this.operation.IDop === undefined) {
+          this.resetOperationAttribut()
+        } else {
+          this.$router.push('/')
+        }
       },
 
       deleteOperation () {
-        this.$store.dispatch('deleteOperation', this.operation.IDop)
+        this.$store.dispatch('deleteOperation', this.operation)
+
+        this.$router.push('/')
+      },
+
+      resetOperationAttribut () {
+        this.operation.NomOp = ''
+        this.operation.MontantOp = 0
+        this.operation.CheckOp = false
+
+        this.montantOpIsPositive = false
       }
     }
   }
