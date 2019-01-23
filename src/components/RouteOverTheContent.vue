@@ -2,7 +2,7 @@
   <div class="route-other-the-content" @click="returnToHome">
     <div class="component-content">
       <h3 class="title">{{$route.name}}</h3>
-      <component :is="componentName" :params="params"/>
+      <component :is="componentName" v-bind="params"/>
     </div>
   </div>
 </template>

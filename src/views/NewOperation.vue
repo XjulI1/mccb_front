@@ -1,6 +1,6 @@
 <template>
   <div>
-    <route-over-the-content component-name="operation-form" :params="{operation: {}}"/>
+    <route-over-the-content component-name="operation-form" :params="params"/>
   </div>
 </template>
 
@@ -11,7 +11,18 @@
     name: 'NewOperation',
     components: { RouteOverTheContent },
     data () {
-      return {}
+      return {
+        params: {
+          operation: {
+            'NomOp': '',
+            'MontantOp': 0,
+            'DateOp': new Date(),
+            'CheckOp': false,
+            'IDcompte': this.$store.state.activeAccount.IDcompte,
+            'IDcat': 0
+          }
+        }
+      }
     },
 
     created () {

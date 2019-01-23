@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{params}}
+    {{operation}}
   </div>
 </template>
 
@@ -8,7 +8,7 @@
   export default {
     name: 'OperationForm',
 
-    props: ['params'],
+    props: ['operation'],
 
     data () {
       return {}
