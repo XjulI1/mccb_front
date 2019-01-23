@@ -10,7 +10,8 @@ export default new Vuex.Store({
     user: {},
     activeAccount: {},
     operationsOfActiveAccount: [],
-    accountList: []
+    accountList: [],
+    categoryList: []
   },
   getters: {
     bloquedCompte (state) {
@@ -101,6 +102,10 @@ export default new Vuex.Store({
           state.accountList[index].solde = Math.round(state.accountList[index].solde * 100) / 100
         }
       })
+    },
+
+    setCategoryList (state, categoryList) {
+      state.categoryList = categoryList
     }
   },
   actions: {
@@ -140,7 +145,7 @@ export default new Vuex.Store({
     },
 
     fetchOperationsOfActiveAccount (context) {
-      let filter = { 'where': { 'IDcompte': this.state.activeAccount.IDcompte }, 'order': 'DateOp DESC', 'limit': 20 }
+      let filter = { 'where': { 'IDcompte': this.state.activeAccount.IDcompte }, 'order': 'CheckOp ASC, DateOp DESC', 'limit': 20 }
 
       axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
         .then((response) => {
@@ -165,6 +170,21 @@ export default new Vuex.Store({
 
     updateOperation (context, operation) {
       axios.patch(config.API_URL + '/api/Operations', operation)
+    },
+
+    deleteOperation (context, operationID) {
+      axios.delete(config.API_URL + '/api/Operations/' + operationID)
+    },
+
+    fetchCategoryList (context) {
+      if (this.state.categoryList.size !== 0) {
+        let filter = { where: { or: [{ IDuser: this.state.user.id }, { IDuser: 0 }] }, order: 'Nom ASC' }
+
+        axios.get(config.API_URL + '/api/Categories?filter=' + JSON.stringify(filter))
+          .then((response) => {
+            context.commit('setCategoryList', response.data)
+          })
+      }
     }
   }
 })

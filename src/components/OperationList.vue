@@ -1,6 +1,6 @@
 <template>
   <div class="operation-list">
-    <operation v-for="(operation, index) in operationsOfActiveAccount" v-bind:key="index" :operation="operation"/>
+    <operation v-for="operation in operationsOfActiveAccount" v-bind:key="'operation-' + operation.IDop" :operation="operation"/>
   </div>
 </template>
 
