@@ -1,5 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExchangeAlt, faPlus, faMoneyBillAlt, faCogs, faList, faSearch, faChartPie } from '@fortawesome/free-solid-svg-icons'
+import { faExchangeAlt, faPlus, faMoneyBillAlt, faCogs, faList, faSearch, faChartPie, faRetweet } from '@fortawesome/free-solid-svg-icons'
 
 export default {
   load: () => {
@@ -10,7 +10,8 @@ export default {
       faCogs,
       faList,
       faSearch,
-      faChartPie
+      faChartPie,
+      faRetweet
     })
   }
 }

@@ -3,7 +3,7 @@
     <all-account-button/>
     <virement-button/>
     <new-operation-button/>
-    <retrait-button/>
+    <operation-recurrente-button/>
     <params-button/>
   </div>
 </template>
@@ -11,13 +11,13 @@
 <script>
   import NewOperationButton from './NavBar/NewOperationButton'
   import VirementButton from './NavBar/VirementButton'
-  import RetraitButton from './NavBar/RetraitButton'
   import ParamsButton from './NavBar/ParamsButton'
   import AllAccountButton from './NavBar/AllAccountButton'
+  import OperationRecurrenteButton from './NavBar/OperationRecurrenteButton'
 
   export default {
     name: 'navbar',
-    components: { AllAccountButton, ParamsButton, RetraitButton, VirementButton, NewOperationButton },
+    components: { OperationRecurrenteButton, AllAccountButton, ParamsButton, VirementButton, NewOperationButton },
     data () {
       return {}
     },
