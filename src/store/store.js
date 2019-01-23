@@ -51,6 +51,16 @@ export default new Vuex.Store({
         acc += account.solde
         return Math.round(acc * 100) / 100
       }, getters.totalAvailable)
+    },
+
+    operationFromCurrentList (state) {
+      return (operationID) => {
+        return state.operationsOfActiveAccount.filter((operation) => {
+          if (parseInt(operationID) === operation.IDop) {
+            return operation
+          }
+        })[0]
+      }
     }
   },
   mutations: {

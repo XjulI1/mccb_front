@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <router-view/>
     <account-header/>
     <div class="left-panel">
       <compte-list class="compte-list"/>

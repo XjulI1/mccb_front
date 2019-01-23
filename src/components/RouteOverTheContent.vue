@@ -1,0 +1,55 @@
+<template>
+  <div class="route-other-the-content" @click="returnToHome">
+    <div class="component-content">
+      <h3 class="title">{{$route.name}}</h3>
+      <component :is="componentName" :params="params"/>
+    </div>
+  </div>
+</template>
+
+<script>
+  import OperationForm from './OperationForm'
+
+  export default {
+    name: 'RouteOverTheContent',
+    components: { OperationForm },
+    props: ['componentName', 'params'],
+
+    data () {
+      return {}
+    },
+
+    created () {
+    },
+
+    methods: {
+      returnToHome (event) {
+        if (event.srcElement.className === 'route-other-the-content') {
+          this.$router.push('/')
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .route-other-the-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 1000;
+    position: fixed;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .component-content {
+    margin: 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    border-radius: 4px;
+  }
+</style>

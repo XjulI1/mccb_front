@@ -55,7 +55,7 @@
     left: 0;
     text-align: center;
     padding-top: 10px;
-    z-index: 1000;
+    z-index: 100;
 
     .account-info {
       font-weight: bold;

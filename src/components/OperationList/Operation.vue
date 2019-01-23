@@ -16,7 +16,7 @@
           {{operation.MontantOp}}{{CURRENCY}}
         </div>
         <div class="col-1">
-          ...
+          <router-link :to="'/editOperation/' + operation.IDop" class="edit-operation">...</router-link>
         </div>
       </div>
     </div>
@@ -71,5 +71,9 @@
 
   .noCategory {
     color: grey;
+  }
+
+  .edit-operation {
+    text-decoration: none;
   }
 </style>

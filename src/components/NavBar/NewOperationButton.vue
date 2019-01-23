@@ -1,6 +1,6 @@
 <template>
   <button class="btn btn-primary disabled new-operation-button" v-on:click="addOperation">
-    <font-awesome-icon icon="plus" />
+    <font-awesome-icon icon="plus"/>
   </button>
 </template>
 
@@ -15,7 +15,8 @@
     },
 
     methods: {
-      addOperation: function () {
+      addOperation () {
+        this.$router.push('/newOperation')
       }
     }
   }
