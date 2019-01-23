@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-1">
-          <input type="checkbox" :id="checkBoxID" v-model="operation.CheckOp" disabled/>
+          <input type="checkbox" :id="checkBoxID" v-model="operation.CheckOp" @change="updateCheckOp"/>
         </div>
         <div class="col-7" :class="css.category">
           <label :for="checkBoxID">
@@ -43,7 +43,11 @@
     created () {
     },
 
-    methods: {}
+    methods: {
+      updateCheckOp () {
+        this.$store.dispatch('updateOperation', this.operation)
+      }
+    }
   }
 </script>
 

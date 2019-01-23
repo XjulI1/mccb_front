@@ -151,6 +151,10 @@ export default new Vuex.Store({
         .then((response) => {
           context.commit('setAllCompteForUser', response.data.results)
         })
+    },
+
+    updateOperation (context, operation) {
+      axios.patch(config.API_URL + '/api/Operations', operation)
     }
   }
 })
