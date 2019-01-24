@@ -4,18 +4,19 @@ import axios from 'axios/index'
 import config from '@/config'
 
 import User from './user.js'
+import Category from './category.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    user: User
+    user: User,
+    category: Category
   },
   state: {
     activeAccount: {},
     operationsOfActiveAccount: [],
-    accountList: [],
-    categoryList: []
+    accountList: []
   },
   getters: {
     bloquedCompte (state) {
@@ -110,10 +111,6 @@ export default new Vuex.Store({
           state.accountList[index].solde = Math.round(state.accountList[index].solde * 100) / 100
         }
       })
-    },
-
-    setCategoryList (state, categoryList) {
-      state.categoryList = categoryList
     }
   },
   actions: {
@@ -185,17 +182,6 @@ export default new Vuex.Store({
         .then(() => {
           this.dispatch('fetchActiveAccount', operation.IDcompte)
         })
-    },
-
-    fetchCategoryList (context) {
-      if (this.state.categoryList.size !== 0) {
-        let filter = { where: { or: [{ IDuser: this.state.user.id }, { IDuser: 0 }] }, order: 'Nom ASC' }
-
-        axios.get(config.API_URL + '/api/Categories?filter=' + JSON.stringify(filter))
-          .then((response) => {
-            context.commit('setCategoryList', response.data)
-          })
-      }
     }
   }
 })

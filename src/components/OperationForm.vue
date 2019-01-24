@@ -6,7 +6,7 @@
     <input type="date" class="form-control" placeholder="Date" v-model="operation.DateOp"/>
 
     <select class="form-control select-category" v-model="operation.IDcat">
-      <option v-for="category in $store.state.categoryList" v-bind:key="'category-' + category.IDcat"
+      <option v-for="category in $store.state.category.list" v-bind:key="'category-' + category.IDcat"
               :value="category.IDcat">
         {{category.Nom}}
       </option>
