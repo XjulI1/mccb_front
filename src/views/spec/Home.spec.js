@@ -17,4 +17,13 @@ describe('Home.vue', () => {
 
     expect(wrapper.findAll(Navbar).length).toBe(1)
   })
+
+  test('should match snapshot', () => {
+    const wrapper = shallowMount(Home, {
+      localVue
+    })
+
+    expect(wrapper.element).toBeDefined()
+    expect(wrapper.element).toMatchSnapshot()
+  })
 })

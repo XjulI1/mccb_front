@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home.vue should match snapshot 1`] = `
+<div
+  class="home"
+>
+  <router-view-stub
+    name="default"
+  />
+   
+  <accountheader-stub />
+   
+  <div
+    class="left-panel"
+  >
+    <comptelist-stub />
+     
+    <navbar-stub />
+  </div>
+   
+  <operationlist-stub />
+</div>
+`;
