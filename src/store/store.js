@@ -156,7 +156,7 @@ export default new Vuex.Store({
       let filter = {
         'where': { 'IDcompte': this.state.activeAccount.IDcompte },
         'order': 'CheckOp ASC, DateOp DESC',
-        'limit': 20
+        'limit': 25
       }
 
       axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))

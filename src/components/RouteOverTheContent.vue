@@ -32,7 +32,9 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import '@/global.scss';
+
   .route-other-the-content {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -47,7 +49,8 @@
   }
 
   .component-content {
-    margin: 10% 2rem 2rem;
+    margin: ($header-account-height + 5px) auto auto;
+    max-width: 600px;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 1rem;
     border-radius: 4px;
