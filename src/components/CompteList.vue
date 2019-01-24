@@ -25,7 +25,7 @@
     name: 'CompteList',
     components: { Compte },
 
-    computed: { ...mapGetters(['totalAvailable', 'totalGlobal']) },
+    computed: { ...mapGetters(['totalAvailable', 'totalGlobal', 'userID']) },
 
     watch: {
       totalAvailable (value) {
@@ -40,6 +40,10 @@
           NomCompte: 'Total global',
           solde: value
         }
+      },
+
+      userID (value) {
+        this.$store.dispatch('fetchAccountList')
       }
     },
 
@@ -59,10 +63,6 @@
           compteBoldTitle: { boldTitle: true }
         }
       }
-    },
-
-    created () {
-      this.$store.dispatch('fetchAccountList')
     },
 
     methods: {}

@@ -3,11 +3,15 @@ import Vuex from 'vuex'
 import axios from 'axios/index'
 import config from '@/config'
 
+import User from './user.js'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    user: User
+  },
   state: {
-    user: {},
     activeAccount: {},
     operationsOfActiveAccount: [],
     accountList: [],
@@ -65,10 +69,6 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setUser (state, user) {
-      state.user = user
-    },
-
     setActiveAccount (state, activeAccount) {
       state.activeAccount = activeAccount
     },
@@ -121,13 +121,6 @@ export default new Vuex.Store({
       this.dispatch('fetchUser', 1)
         .then(() => {
           this.dispatch('fetchActiveAccount', this.state.user.favoris)
-        })
-    },
-
-    fetchUser (context, userID) {
-      return axios.get(config.API_URL + '/api/users/' + userID)
-        .then((response) => {
-          context.commit('setUser', response.data)
         })
     },
 

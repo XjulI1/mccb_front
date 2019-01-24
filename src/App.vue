@@ -8,7 +8,7 @@
   export default {
     name: 'app',
 
-    beforeCreate () {
+    created () {
       this.$store.dispatch('initialState')
     }
   }
