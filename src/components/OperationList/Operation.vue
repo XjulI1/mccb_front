@@ -1,23 +1,21 @@
 <template>
-  <div class="operation">
-    <div class="container">
-      <div class="row">
-        <div class="col-1">
-          <input type="checkbox" :id="checkBoxID" v-model="operation.CheckOp" @change="updateCheckOp"/>
-        </div>
-        <div class="col-7" :class="css.category">
-          <label :for="checkBoxID">
-            {{operation.NomOp}}
-            <br>
-            {{dateOperation}}
-          </label>
-        </div>
-        <div class="col-3 center-text" :class="css.montant">
-          {{operation.MontantOp}}{{CURRENCY}}
-        </div>
-        <div class="col-1">
-          <router-link :to="'/editOperation/' + operation.IDop" class="edit-operation">...</router-link>
-        </div>
+  <div class="operation container">
+    <div class="row">
+      <div class="col-1">
+        <input type="checkbox" :id="checkBoxID" v-model="operation.CheckOp" @change="updateCheckOp"/>
+      </div>
+      <div class="col-7" :class="css.category">
+        <label :for="checkBoxID">
+          {{operation.NomOp}}
+          <br>
+          {{dateOperation}}
+        </label>
+      </div>
+      <div class="col-3 center-text" :class="css.montant">
+        {{operation.MontantOp}}{{$store.state.currency}}
+      </div>
+      <div class="col-1">
+        <router-link :to="'/editOperation/' + operation.IDop" class="edit-operation">...</router-link>
       </div>
     </div>
   </div>
@@ -31,16 +29,12 @@
     data () {
       return {
         dateOperation: new Date(this.operation.DateOp).toLocaleDateString(),
-        CURRENCY: '€',
         css: {
           category: this.operation.IDcat === 0 ? 'noCategory' : '',
           montant: this.operation.MontantOp > 0 ? 'montantIn' : 'montantOut'
         },
         checkBoxID: 'checkboxOperationID-' + this.operation.IDop
       }
-    },
-
-    created () {
     },
 
     methods: {
@@ -52,7 +46,6 @@
 </script>
 
 <style scoped>
-
   input[type=checkbox] {
     margin-top: 1.0rem;
   }

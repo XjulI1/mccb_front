@@ -15,13 +15,6 @@
     components: { OperationForm },
     props: ['componentName', 'params'],
 
-    data () {
-      return {}
-    },
-
-    created () {
-    },
-
     methods: {
       returnToHome (event) {
         if (event.srcElement.className === 'route-other-the-content') {

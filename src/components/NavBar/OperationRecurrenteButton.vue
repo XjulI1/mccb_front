@@ -1,21 +1,15 @@
 <template>
   <button class="btn btn-info disabled operation-recurrente-button" v-on:click="getRecurrenteOp">
-    <font-awesome-icon icon="retweet" />
+    <font-awesome-icon icon="retweet"/>
   </button>
 </template>
 
 <script>
   export default {
     name: 'OperationRecurrenteButton',
-    data () {
-      return {}
-    },
-
-    created () {
-    },
 
     methods: {
-      getRecurrenteOp: function () {
+      getRecurrenteOp () {
       }
     }
   }

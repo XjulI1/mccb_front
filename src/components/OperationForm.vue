@@ -31,7 +31,6 @@
 <script>
   export default {
     name: 'OperationForm',
-
     props: ['operation'],
 
     watch: {
@@ -52,9 +51,7 @@
 
     created () {
       this.operation.DateOp = new Date(this.operation.DateOp).toISOString().split('T')[0]
-
       this.montantOpIsPositive = this.operation.MontantOp > 0
-
       this.$store.dispatch('fetchCategoryList')
     },
 
@@ -109,10 +106,6 @@
 
   .operation-form {
     text-align: center
-  }
-
-  .form-check-input {
-    /*position: relative;*/
   }
 
   .select-category {

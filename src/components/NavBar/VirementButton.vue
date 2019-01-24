@@ -1,21 +1,15 @@
 <template>
   <button class="btn btn-success disabled new-operation-button" v-on:click="doTransfert">
-    <font-awesome-icon icon="exchange-alt" />
+    <font-awesome-icon icon="exchange-alt"/>
   </button>
 </template>
 
 <script>
   export default {
     name: 'VirementButton',
-    data () {
-      return {}
-    },
-
-    created () {
-    },
 
     methods: {
-      doTransfert: function () {
+      doTransfert () {
       }
     }
   }

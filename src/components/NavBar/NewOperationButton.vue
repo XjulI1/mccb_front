@@ -7,12 +7,6 @@
 <script>
   export default {
     name: 'NewOperationButton',
-    data () {
-      return {}
-    },
-
-    created () {
-    },
 
     methods: {
       addOperation () {

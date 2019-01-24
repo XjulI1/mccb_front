@@ -42,7 +42,7 @@
         }
       },
 
-      userID (value) {
+      userID () {
         this.$store.dispatch('fetchAccountList')
       }
     },
@@ -63,14 +63,14 @@
           compteBoldTitle: { boldTitle: true }
         }
       }
-    },
-
-    methods: {}
+    }
   }
 </script>
 
 <style scoped>
-  .compte-list {
-
+  @media screen and (max-width: 767px) {
+    .compte-list {
+      display: none;
+    }
   }
 </style>

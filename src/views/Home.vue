@@ -3,34 +3,22 @@
     <router-view/>
     <account-header/>
     <div class="left-panel">
-      <compte-list class="compte-list"/>
-      <navbar class="navbar"/>
+      <compte-list/>
+      <navbar/>
     </div>
-    <operation-list class="operation-list"/>
+    <operation-list/>
   </div>
 </template>
 
 <script>
   import Navbar from '../components/Navbar'
   import AccountHeader from '../components/AccountHeader'
-  import { mapState } from 'vuex'
   import OperationList from '../components/OperationList'
   import CompteList from '../components/CompteList'
 
   export default {
-    name: 'home',
-    components: { CompteList, OperationList, AccountHeader, Navbar },
-
-    data () {
-      return {}
-    },
-
-    computed: mapState(['user', 'activeAccount']),
-
-    created () {
-    },
-
-    methods: {}
+    name: 'Home',
+    components: { CompteList, OperationList, AccountHeader, Navbar }
   }
 </script>
 
@@ -46,10 +34,6 @@
     .home {
       margin-bottom: $navbar-height;
     }
-
-    .compte-list {
-      display: none;
-    }
   }
 
   @media screen and (min-width: 768px) {
@@ -57,17 +41,9 @@
       display: flex;
     }
 
-    .operation-list {
-      width: 65%;
-      margin-left: 35%;
-    }
-
     .left-panel {
       width: 35%;
       position: fixed;
-    }
-
-    .compte-list {
     }
   }
 </style>

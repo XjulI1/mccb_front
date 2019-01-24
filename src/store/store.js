@@ -17,7 +17,8 @@ export default new Vuex.Store({
   },
   state: {
     activeAccount: {},
-    accountList: []
+    accountList: [],
+    currency: '€'
   },
   getters: {
     bloquedCompte (state) {

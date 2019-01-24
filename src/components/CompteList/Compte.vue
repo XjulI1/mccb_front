@@ -5,7 +5,7 @@
         {{accountInformations.NomCompte}}
       </div>
       <div class="col-5 account-solde">
-        {{accountInformations.solde}} €
+        {{accountInformations.solde}} {{$store.state.currency}}
       </div>
     </div>
   </div>
@@ -14,7 +14,6 @@
 <script>
   export default {
     name: 'Compte',
-
     props: ['accountInformations', 'boldTitle', 'disableClick'],
 
     data () {
@@ -22,9 +21,6 @@
         classBoldTitle: this.boldTitle ? 'bold-title' : '',
         classPointer: this.disableClick ? '' : 'cursor-pointer'
       }
-    },
-
-    created () {
     },
 
     methods: {

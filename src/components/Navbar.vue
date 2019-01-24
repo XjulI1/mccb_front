@@ -1,5 +1,5 @@
 <template>
-  <div class="btn-group main-navbar" role="group">
+  <div class="navbar btn-group" role="group">
     <all-account-button/>
     <virement-button/>
     <new-operation-button/>
@@ -17,22 +17,14 @@
 
   export default {
     name: 'navbar',
-    components: { OperationRecurrenteButton, AllAccountButton, ParamsButton, VirementButton, NewOperationButton },
-    data () {
-      return {}
-    },
-
-    created () {
-    },
-
-    methods: {}
+    components: { OperationRecurrenteButton, AllAccountButton, ParamsButton, VirementButton, NewOperationButton }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '@/global.scss';
 
-  .main-navbar {
+  .navbar {
     padding: 0;
 
     @media screen and (max-width: 768px) {

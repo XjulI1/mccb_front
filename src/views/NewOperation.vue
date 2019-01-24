@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <route-over-the-content component-name="operation-form" :params="params"/>
-  </div>
+  <route-over-the-content component-name="operation-form" :params="params"/>
 </template>
 
 <script>
@@ -10,6 +8,7 @@
   export default {
     name: 'NewOperation',
     components: { RouteOverTheContent },
+
     data () {
       return {
         params: {
@@ -23,15 +22,6 @@
           }
         }
       }
-    },
-
-    created () {
-    },
-
-    methods: {}
+    }
   }
 </script>
-
-<style scoped>
-
-</style>

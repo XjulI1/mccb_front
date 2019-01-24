@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'app',
+    name: 'App',
 
     created () {
       this.$store.dispatch('initialState')

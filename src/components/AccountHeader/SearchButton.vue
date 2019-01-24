@@ -1,21 +1,15 @@
 <template>
   <button class="btn btn-info disabled new-operation-button" v-on:click="searchOperation">
-    <font-awesome-icon icon="search" />
+    <font-awesome-icon icon="search"/>
   </button>
 </template>
 
 <script>
   export default {
     name: 'SearchButton',
-    data () {
-      return {}
-    },
-
-    created () {
-    },
 
     methods: {
-      searchOperation: function () {
+      searchOperation () {
       }
     }
   }

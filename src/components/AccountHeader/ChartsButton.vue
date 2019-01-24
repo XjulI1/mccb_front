@@ -1,21 +1,15 @@
 <template>
   <button class="btn btn-secondary disabled new-operation-button" v-on:click="searchOperation">
-    <font-awesome-icon icon="chart-pie" />
+    <font-awesome-icon icon="chart-pie"/>
   </button>
 </template>
 
 <script>
   export default {
     name: 'ChartsButton',
-    data () {
-      return {}
-    },
-
-    created () {
-    },
 
     methods: {
-      searchOperation: function () {
+      searchOperation () {
       }
     }
   }

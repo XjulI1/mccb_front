@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="operation-list">
     <operation v-for="operation in operationsOfActiveAccount" v-bind:key="'operation-' + operation.IDop"
                :operation="operation"/>
   </div>
@@ -16,3 +16,12 @@
     computed: mapGetters(['operationsOfActiveAccount'])
   }
 </script>
+
+<style scoped>
+  @media screen and (min-width: 768px) {
+    .operation-list {
+      width: 65%;
+      margin-left: 35%;
+    }
+  }
+</style>

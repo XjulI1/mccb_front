@@ -10,8 +10,9 @@
             {{$store.state.activeAccount.NomCompte}}
           </div>
           <div>
-            {{$store.state.activeAccount.soldeNotChecked}} {{CURRENCY}} - [{{$store.state.activeAccount.soldeChecked}}
-            {{CURRENCY}}]
+            {{$store.state.activeAccount.soldeNotChecked}} {{$store.state.currency}} -
+            [{{$store.state.activeAccount.soldeChecked}}
+            {{$store.state.currency}}]
           </div>
         </div>
         <div class="col-3">
@@ -28,18 +29,7 @@
 
   export default {
     name: 'AccountHeader',
-    components: { ChartsButton, SearchButton },
-
-    data () {
-      return {
-        CURRENCY: '€'
-      }
-    },
-
-    created () {
-    },
-
-    methods: {}
+    components: { ChartsButton, SearchButton }
   }
 </script>
 
