@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary disabled new-operation-button" v-on:click="addOperation">
+  <button class="btn btn-primary new-operation-button" v-on:click="addOperation">
     <font-awesome-icon icon="plus"/>
   </button>
 </template>
