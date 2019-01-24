@@ -4,13 +4,15 @@
       <div class="col-1">
         <input type="checkbox" :id="checkBoxID" v-model="operation.CheckOp" @change="updateCheckOp"/>
       </div>
-      <div class="col-7" :class="css.category">
-        <label :for="checkBoxID">
+      <draggable class="col-7" :class="css.category"
+                 @start="startDrag" @end="endDrag"
+                 :options="{group:{name: 'operation', pull: 'clone', put: ['false'] }}">
+        <label :for="checkBoxID" :data-id="operation.IDop">
           {{operation.NomOp}}
           <br>
           {{dateOperation}}
         </label>
-      </div>
+      </draggable>
       <div class="col-3 center-text" :class="css.montant">
         {{operation.MontantOp.toLocaleString()}}{{$store.state.currency}}
       </div>
@@ -22,9 +24,13 @@
 </template>
 
 <script>
+  import draggable from 'vuedraggable'
+
   export default {
     name: 'Operation',
     props: ['operation'],
+
+    components: { draggable },
 
     data () {
       return {
@@ -40,6 +46,14 @@
     methods: {
       updateCheckOp () {
         this.$store.dispatch('updateOperation', this.operation)
+      },
+
+      startDrag () {
+        this.$el.parentElement.querySelector('.categories-drop-zone').style.display = 'block'
+      },
+
+      endDrag () {
+        this.$el.parentElement.querySelector('.categories-drop-zone').style.display = 'none'
       }
     }
   }

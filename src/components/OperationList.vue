@@ -6,9 +6,11 @@
                :operation="operation"/>
 
     <operation-recurrente v-else-if="operation.IDopRecu"
-               v-bind:key="'operation-recu-' + operation.IDopRecu"
-               :operation="operation"
-               recurr="true"/>
+                          v-bind:key="'operation-recu-' + operation.IDopRecu"
+                          :operation="operation"
+                          recurr="true"/>
+
+    <categories-drop-zone/>
   </div>
 </template>
 
@@ -16,10 +18,11 @@
   import Operation from './OperationList/Operation'
   import { mapGetters } from 'vuex'
   import OperationRecurrente from './OperationList/OperationRecurrente'
+  import CategoriesDropZone from './OperationList/CategoriesDropZone'
 
   export default {
     name: 'OperationList',
-    components: { OperationRecurrente, Operation },
+    components: { CategoriesDropZone, OperationRecurrente, Operation },
 
     computed: mapGetters(['operationsOfActiveAccount'])
   }
