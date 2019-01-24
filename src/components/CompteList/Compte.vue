@@ -26,6 +26,7 @@
     methods: {
       getAccountDetails () {
         if (!this.disableClick) {
+          this.$router.push('/')
           this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
         }
       }

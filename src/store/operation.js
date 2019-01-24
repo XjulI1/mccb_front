@@ -50,6 +50,21 @@ export default {
         .then(() => {
           this.dispatch('fetchActiveAccount', operation.IDcompte)
         })
+    },
+
+    fetchRecurrOperation (context) {
+      context.commit('setOperationsOfActiveAccount', {})
+      context.commit('setActiveAccount', { NomCompte: 'Opérations récurrentes' })
+
+      let filter = {
+        where: {},
+        order: 'DernierDateOpRecu ASC, NomOpRecu ASC'
+      }
+
+      axios.get(config.API_URL + '/api/OperationRecurrentes/?filter=' + JSON.stringify(filter))
+        .then((response) => {
+          context.commit('setOperationsOfActiveAccount', response.data)
+        })
     }
   }
 }

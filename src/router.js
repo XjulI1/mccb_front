@@ -5,6 +5,8 @@ import Home from '@/views/Home.vue'
 import NewOperation from '@/views/NewOperation'
 import EditOperation from '@/views/EditOperation'
 
+import RecurrOperation from '@/views/RecurrOperation'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +22,10 @@ export default new Router({
       path: '/editOperation/:id',
       name: 'Edition opération',
       component: EditOperation
+    }, {
+      path: '/recurrOperation',
+      name: 'Opérations récurrentes',
+      component: RecurrOperation
     }]
   }]
 })

@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-info disabled operation-recurrente-button" v-on:click="getRecurrenteOp">
+  <button class="btn btn-info operation-recurrente-button" v-on:click="getRecurrenteOp">
     <font-awesome-icon icon="retweet"/>
   </button>
 </template>
@@ -10,6 +10,7 @@
 
     methods: {
       getRecurrenteOp () {
+        this.$router.push('/recurrOperation')
       }
     }
   }
