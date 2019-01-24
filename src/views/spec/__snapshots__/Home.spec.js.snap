@@ -4,7 +4,7 @@ exports[`Home.vue should match snapshot 1`] = `
 <div
   class="home"
 >
-  <router-view-stub
+  <routerview-stub
     name="default"
   />
    
