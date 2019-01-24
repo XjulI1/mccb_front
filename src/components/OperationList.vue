@@ -1,30 +1,18 @@
 <template>
-  <div class="operation-list">
-    <operation v-for="operation in operationsOfActiveAccount" v-bind:key="'operation-' + operation.IDop" :operation="operation"/>
+  <div>
+    <operation v-for="operation in operationsOfActiveAccount" v-bind:key="'operation-' + operation.IDop"
+               :operation="operation"/>
   </div>
 </template>
 
 <script>
   import Operation from './OperationList/Operation'
-  import { mapState } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'OperationList',
     components: { Operation },
 
-    computed: mapState(['operationsOfActiveAccount']),
-
-    data () {
-      return {}
-    },
-
-    created () {
-    },
-
-    methods: {}
+    computed: mapGetters(['operationsOfActiveAccount'])
   }
 </script>
-
-<style scoped>
-
-</style>
