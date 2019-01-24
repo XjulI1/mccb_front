@@ -10,8 +10,8 @@
             {{$store.state.activeAccount.NomCompte}}
           </div>
           <div>
-            {{$store.state.activeAccount.soldeNotChecked}} {{$store.state.currency}} -
-            [{{$store.state.activeAccount.soldeChecked}}
+            {{($store.state.activeAccount.soldeNotChecked | 0).toLocaleString()}} {{$store.state.currency}} -
+            [{{($store.state.activeAccount.soldeChecked | 0).toLocaleString()}}
             {{$store.state.currency}}]
           </div>
         </div>

@@ -5,7 +5,7 @@
         {{accountInformations.NomCompte}}
       </div>
       <div class="col-5 account-solde">
-        {{accountInformations.solde}} {{$store.state.currency}}
+        {{accountInformations.solde.toLocaleString()}} {{$store.state.currency}}
       </div>
     </div>
   </div>

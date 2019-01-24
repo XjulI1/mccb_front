@@ -12,7 +12,7 @@
         </label>
       </div>
       <div class="col-3 center-text" :class="css.montant">
-        {{operation.MontantOp}}{{$store.state.currency}}
+        {{operation.MontantOp.toLocaleString()}}{{$store.state.currency}}
       </div>
       <div class="col-1">
         <router-link :to="'/editOperation/' + operation.IDop" class="edit-operation">...</router-link>

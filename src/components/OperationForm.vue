@@ -1,6 +1,6 @@
 <template>
   <div class="operation-form" v-if="operation" @keypress.enter="updateOperation">
-    <input type="text" class="form-control" placeholder="Titre" v-model="operation.NomOp"/>
+    <input id="operation-name" type="text" class="form-control" placeholder="Titre" v-model="operation.NomOp"/>
     <input type="number" class="form-control" :class="montantClass()" placeholder="Montant"
            v-model="operation.MontantOp"/>
     <input type="date" class="form-control" placeholder="Date" v-model="operation.DateOp"/>
@@ -47,6 +47,10 @@
       return {
         montantOpIsPositive: false
       }
+    },
+
+    mounted () {
+      this.$el.querySelector('#operation-name').focus()
     },
 
     created () {
