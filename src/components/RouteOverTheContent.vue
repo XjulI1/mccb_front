@@ -47,7 +47,7 @@
   }
 
   .component-content {
-    margin: 2rem;
+    margin: 10% 2rem 2rem;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 1rem;
     border-radius: 4px;
