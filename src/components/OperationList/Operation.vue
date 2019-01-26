@@ -49,11 +49,11 @@
       },
 
       startDrag () {
-        this.$el.parentElement.querySelector('.categories-drop-zone').style.display = 'block'
+        this.$store.dispatch('toggleCategoriesDropZone')
       },
 
       endDrag () {
-        this.$el.parentElement.querySelector('.categories-drop-zone').style.display = 'none'
+        this.$store.dispatch('toggleCategoriesDropZone')
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="categories-drop-zone">
+  <div class="categories-drop-zone" :class="$store.state.display.categories_drop_zone ? 'display-zone' : ''">
     <div class="category-container">
       <draggable class="category"
                  v-for="category in $store.state.category.list "
@@ -50,6 +50,10 @@
 </script>
 
 <style lang="scss" scoped>
+  .display-zone {
+    display: block !important;
+  }
+
   .categories-drop-zone {
     position: fixed;
     z-index: 1000;
