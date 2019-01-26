@@ -9,7 +9,7 @@
           <div>
             {{$store.state.activeAccount.NomCompte}}
           </div>
-          <div>
+          <div :class="$store.state.activeAccount.NomCompte.includes('récurrentes') ? 'no-total' : ''">
             {{($store.state.activeAccount.soldeNotChecked | 0).toLocaleString()}} {{$store.state.currency}} -
             [{{($store.state.activeAccount.soldeChecked | 0).toLocaleString()}}
             {{$store.state.currency}}]
@@ -35,6 +35,10 @@
 
 <style lang="scss" scoped>
   @import '@/global.scss';
+
+  .no-total {
+    display: none
+  }
 
   .account-header {
     height: $header-account-height;
