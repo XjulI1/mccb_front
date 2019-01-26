@@ -53,8 +53,11 @@
     text-align: right
   }
 
+  .col-8 {
+    padding-left: 10px;
+  }
+
   .col-4 {
-    padding: 0;
-    padding-right: 15px;
+    padding: 0 10px 0 0;
   }
 </style>

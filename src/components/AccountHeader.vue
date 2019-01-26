@@ -2,20 +2,20 @@
   <div class="account-header">
     <div class="container">
       <div class="row">
-        <div class="col-3">
+        <div class="col-2">
           <search-button/>
         </div>
-        <div class="col-6 account-info">
+        <div class="col-8 account-info">
           <div>
             {{nomCompte}}
           </div>
           <div :class="nomCompte.includes('récurrentes') ? 'no-total' : ''">
-            {{($store.state.activeAccount.soldeNotChecked | 0).toLocaleString()}} {{$store.state.currency}} -
-            [{{($store.state.activeAccount.soldeChecked | 0).toLocaleString()}}
+            {{($store.state.activeAccount.soldeNotChecked || 0).toLocaleString()}} {{$store.state.currency}} -
+            [{{($store.state.activeAccount.soldeChecked || 0).toLocaleString()}}
             {{$store.state.currency}}]
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <charts-button/>
         </div>
       </div>
@@ -72,7 +72,7 @@
       margin-right: auto !important;
     }
 
-    .col-3 {
+    .col-2 {
       padding: 0
     }
 
