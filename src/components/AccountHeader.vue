@@ -7,9 +7,9 @@
         </div>
         <div class="col-6 account-info">
           <div>
-            {{$store.state.activeAccount.NomCompte}}
+            {{nomCompte}}
           </div>
-          <div :class="$store.state.activeAccount.NomCompte.includes('récurrentes') ? 'no-total' : ''">
+          <div :class="nomCompte.includes('récurrentes') ? 'no-total' : ''">
             {{($store.state.activeAccount.soldeNotChecked | 0).toLocaleString()}} {{$store.state.currency}} -
             [{{($store.state.activeAccount.soldeChecked | 0).toLocaleString()}}
             {{$store.state.currency}}]
@@ -24,12 +24,28 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import SearchButton from './AccountHeader/SearchButton'
   import ChartsButton from './AccountHeader/ChartsButton'
 
   export default {
     name: 'AccountHeader',
-    components: { ChartsButton, SearchButton }
+    components: { ChartsButton, SearchButton },
+
+    computed: { ...mapState({ activeAccount: 'activeAccount' }) },
+
+    watch: {
+      activeAccount (value) {
+        this.nomCompte = value.NomCompte
+      }
+    },
+
+    data () {
+      return {
+        nomCompte: ''
+      }
+    }
   }
 </script>
 
