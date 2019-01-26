@@ -1,10 +1,10 @@
 <template>
   <div class="account-informations container" :class="classPointer" @click="getAccountDetails">
     <div class="row">
-      <div class="col-7" :class="classBoldTitle">
+      <div class="col-8" :class="classBoldTitle">
         {{accountInformations.NomCompte}}
       </div>
-      <div class="col-5 account-solde">
+      <div class="col-4 account-solde">
         {{accountInformations.solde.toLocaleString()}} {{$store.state.currency}}
       </div>
     </div>
@@ -36,7 +36,8 @@
 
 <style scoped>
   .account-informations {
-    padding: 8px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
   }
 
   .cursor-pointer {
@@ -49,5 +50,9 @@
 
   .account-solde {
     text-align: right
+  }
+
+  .col-4 {
+    padding: 0
   }
 </style>
