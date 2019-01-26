@@ -88,6 +88,10 @@ export default new Vuex.Store({
 
     setAccountList (state, accountList) {
       state.accountList = accountList
+
+      state.accountList.map((account) => {
+        account.base_solde = account.solde
+      })
     },
 
     setSumAllCompteForUser (state, sumList) {
@@ -95,10 +99,12 @@ export default new Vuex.Store({
         let sum = sumList.filter(sum => sum.IDCompte === account.IDcompte)
 
         if (sum[0]) {
-          state.accountList[index].solde += sum[0].TotalChecked
-          state.accountList[index].solde += sum[0].TotalNotChecked || 0
+          let account = state.accountList[index]
 
-          state.accountList[index].solde = Math.round(state.accountList[index].solde * 100) / 100
+          account.base_solde += sum[0].TotalChecked + (sum[0].TotalNotChecked || 0)
+          account.base_solde = Math.round(account.base_solde * 100) / 100
+
+          account.solde = account.base_solde
         }
       })
     }
