@@ -1,6 +1,6 @@
 <template>
   <div class="account-header">
-    <div class="container account-infos">
+    <div class="container">
       <div class="row">
         <div class="col-3">
           <search-button/>
@@ -47,9 +47,18 @@
     padding-top: 10px;
     z-index: 100;
 
+    .container {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .col-3 {
+      padding: 0
+    }
+
     .account-info {
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 0;
     }
   }

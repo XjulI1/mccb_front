@@ -80,7 +80,7 @@
       z-index: 1000;
       top: $header-account-height;
       height: calc(100% - 40px - 70px);
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.95);
       width: 100%;
       padding-top: 5px;
     }
