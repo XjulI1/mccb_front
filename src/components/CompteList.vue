@@ -10,9 +10,9 @@
             v-bind:key="'account-' + account.IDcompte"/>
     <hr>
     <compte :account-informations="totalAccounts.available" :boldTitle="cssClasses.compteBoldTitle.boldTitle"
-            :disable-click="true"/>
+            :disable-click="true" no-color="true"/>
     <compte :account-informations="totalAccounts.all" :boldTitle="cssClasses.compteBoldTitle.boldTitle"
-            :disable-click="true"/>
+            :disable-click="true" :warning="$store.state.user.warningTotal"/>
   </div>
 </template>
 

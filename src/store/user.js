@@ -4,7 +4,8 @@ import config from '@/config'
 export default {
   state: {
     id: undefined,
-    favoris: undefined
+    favoris: undefined,
+    warningTotal: undefined
   },
   getters: {
     userID (state) {
@@ -15,6 +16,7 @@ export default {
     setUser (state, user) {
       state.id = user.id
       state.favoris = user.favoris
+      state.warningTotal = user.warningTotal
     }
   },
   actions: {

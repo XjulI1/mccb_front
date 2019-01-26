@@ -8,13 +8,18 @@
         {{accountInformations.solde.toLocaleString()}} {{$store.state.currency}}
       </div>
     </div>
+    <div class="row" v-if="warning">
+      <div class="col-12 warning-infos" :class="soldeColor">
+        {{(accountInformations.solde - warning).toLocaleString()}} {{$store.state.currency}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
     name: 'Compte',
-    props: ['accountInformations', 'boldTitle', 'disableClick'],
+    props: ['accountInformations', 'boldTitle', 'disableClick', 'noColor', 'warning'],
 
     watch: {
       'accountInformations.solde' () {
@@ -41,6 +46,14 @@
       },
 
       getSoldeColor () {
+        if (this.noColor) {
+          return ''
+        }
+
+        if (this.accountInformations.solde < this.warning) {
+          return 'soldeWarning'
+        }
+
         return this.accountInformations.solde >= 0 ? 'soldeIn' : 'soldeOut'
       }
     }
@@ -65,8 +78,18 @@
     color: green;
   }
 
+  .soldeWarning {
+    color: orange;
+  }
+
   .soldeOut {
     color: red;
+  }
+
+  .warning-infos {
+    text-align: right;
+    font-size: 0.7rem;
+    font-weight: bold;
   }
 
   .account-solde {
@@ -77,7 +100,7 @@
     padding-left: 10px;
   }
 
-  .col-4 {
+  .col-4, .col-12 {
     padding: 0 10px 0 0;
   }
 </style>
