@@ -1,13 +1,13 @@
 <template>
   <div class="compte-list" :class="$store.state.display.account_list ? '' : 'mask-list'">
     <compte :account-informations="account" v-for="account in $store.getters.availableCompte"
-            v-bind:key="'account-' + account.IDcompte"/>
+            v-bind:key="'account-' + account.IDcompte" fa_icon="check"/>
     <hr>
     <compte :account-informations="account" v-for="account in $store.getters.bloquedCompte"
-            v-bind:key="'account-' + account.IDcompte"/>
+            v-bind:key="'account-' + account.IDcompte" fa_icon="times-circle"/>
     <hr>
     <compte :account-informations="account" v-for="account in $store.getters.porteFeuilleCompte"
-            v-bind:key="'account-' + account.IDcompte"/>
+            v-bind:key="'account-' + account.IDcompte" fa_icon="money-bill"/>
     <hr>
     <compte :account-informations="totalAccounts.available" :boldTitle="cssClasses.compteBoldTitle.boldTitle"
             :disable-click="true" no-color="true"/>

@@ -2,6 +2,7 @@
   <div class="account-informations container" :class="classPointer" @click="getAccountDetails">
     <div class="row">
       <div class="col-8" :class="classBoldTitle">
+        <font-awesome-icon :icon="fa_icon" class="icon-fa" v-if="fa_icon"/>
         {{accountInformations.NomCompte}}
       </div>
       <div class="col-4 account-solde" :class="soldeColor">
@@ -19,7 +20,7 @@
 <script>
   export default {
     name: 'Compte',
-    props: ['accountInformations', 'boldTitle', 'disableClick', 'noColor', 'warning'],
+    props: ['accountInformations', 'boldTitle', 'disableClick', 'noColor', 'warning', 'fa_icon'],
 
     watch: {
       'accountInformations.solde' () {
@@ -84,6 +85,7 @@
 
   .soldeOut {
     color: red;
+    font-weight: bold;
   }
 
   .warning-infos {
@@ -102,5 +104,11 @@
 
   .col-4, .col-12 {
     padding: 0 10px 0 0;
+  }
+
+  .icon-fa {
+    font-size: 0.7rem;
+    color: grey;
+    margin-bottom: 0.1rem;
   }
 </style>

@@ -1,17 +1,30 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faExchangeAlt, faPlus, faMoneyBillAlt, faCogs, faList, faSearch, faChartPie, faRetweet } from '@fortawesome/free-solid-svg-icons'
+import {
+  faChartPie,
+  faCheck,
+  faCogs,
+  faExchangeAlt,
+  faList,
+  faMoneyBill,
+  faPlus,
+  faRetweet,
+  faSearch,
+  faTimesCircle
+} from '@fortawesome/free-solid-svg-icons'
 
 export default {
   load: () => {
     library.add({
-      faExchangeAlt,
-      faPlus,
-      faMoneyBillAlt,
-      faCogs,
-      faList,
-      faSearch,
       faChartPie,
-      faRetweet
+      faCheck,
+      faCogs,
+      faExchangeAlt,
+      faList,
+      faMoneyBill,
+      faPlus,
+      faRetweet,
+      faSearch,
+      faTimesCircle
     })
   }
 }
