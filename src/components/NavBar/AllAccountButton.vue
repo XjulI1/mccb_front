@@ -10,6 +10,7 @@
 
     methods: {
       openAllAccount () {
+        this.$store.dispatch('toggleAccountList')
       }
     }
   }

@@ -28,6 +28,7 @@
         if (!this.disableClick) {
           this.$router.push('/')
           this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
+          this.$store.dispatch('toggleAccountList', false)
         }
       }
     }
@@ -53,6 +54,7 @@
   }
 
   .col-4 {
-    padding: 0
+    padding: 0;
+    padding-right: 15px;
   }
 </style>
