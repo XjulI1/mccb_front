@@ -4,7 +4,7 @@
       <div class="col-8" :class="classBoldTitle">
         {{accountInformations.NomCompte}}
       </div>
-      <div class="col-4 account-solde">
+      <div class="col-4 account-solde" :class="soldeColor">
         {{accountInformations.solde.toLocaleString()}} {{$store.state.currency}}
       </div>
     </div>
@@ -16,8 +16,15 @@
     name: 'Compte',
     props: ['accountInformations', 'boldTitle', 'disableClick'],
 
+    watch: {
+      'accountInformations.solde' () {
+        this.soldeColor = this.getSoldeColor()
+      }
+    },
+
     data () {
       return {
+        soldeColor: this.getSoldeColor(),
         classBoldTitle: this.boldTitle ? 'bold-title' : '',
         classPointer: this.disableClick ? '' : 'cursor-pointer'
       }
@@ -27,9 +34,14 @@
       getAccountDetails () {
         if (!this.disableClick) {
           this.$router.push('/')
+
           this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
           this.$store.dispatch('toggleAccountList', false)
         }
+      },
+
+      getSoldeColor () {
+        return this.accountInformations.solde >= 0 ? 'soldeIn' : 'soldeOut'
       }
     }
   }
@@ -47,6 +59,14 @@
 
   .bold-title {
     font-weight: bold;
+  }
+
+  .soldeIn {
+    color: green;
+  }
+
+  .soldeOut {
+    color: red;
   }
 
   .account-solde {
