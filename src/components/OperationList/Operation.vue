@@ -6,7 +6,8 @@
       </div>
       <draggable class="col-7" :class="css.category"
                  @start="startDrag" @end="endDrag"
-                 :options="{group:{name: 'operation', pull: 'clone', put: ['false'] }}">
+                 :options="{group:{name: 'operation', pull: 'clone', put: ['false'] }}"
+                 :data-idcat="operation.IDcat">
         <label :for="checkBoxID" :data-id="operation.IDop">
           {{operation.NomOp}}
           <br>
@@ -48,8 +49,9 @@
         this.$store.dispatch('updateOperation', this.operation)
       },
 
-      startDrag () {
+      startDrag (event) {
         this.$store.dispatch('toggleCategoriesDropZone')
+        this.$store.dispatch('actualDragCategory', event.srcElement.dataset.idcat)
       },
 
       endDrag () {

@@ -7,7 +7,7 @@
                  :data-id="category.IDcat"
                  :options="{group: {name: 'category', put: ['operation']}}"
                  @add="addNewOperation">
-        <div>
+        <div :class="$store.state.display.actual_drag_cat === category.IDcat ? 'actual-drag-cat' : ''">
           <b>{{category.Nom}}</b>
         </div>
       </draggable>
@@ -52,6 +52,10 @@
 <style lang="scss" scoped>
   .display-zone {
     display: block !important;
+  }
+
+  .actual-drag-cat {
+    color: orange;
   }
 
   .categories-drop-zone {

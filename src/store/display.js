@@ -1,7 +1,8 @@
 export default {
   state: {
     account_list: false,
-    categories_drop_zone: false
+    categories_drop_zone: false,
+    actual_drag_cat: undefined
   },
   getters: {},
   mutations: {
@@ -11,6 +12,10 @@ export default {
 
     toggleCategoriesDropZone (state) {
       state.categories_drop_zone = !state.categories_drop_zone
+    },
+
+    setActualDragCategory (state, IDcat) {
+      state.actual_drag_cat = parseInt(IDcat)
     }
   },
   actions: {
@@ -20,6 +25,10 @@ export default {
 
     toggleCategoriesDropZone (context) {
       context.commit('toggleCategoriesDropZone')
+    },
+
+    actualDragCategory (context, IDcat) {
+      context.commit('setActualDragCategory', IDcat)
     }
   }
 }
