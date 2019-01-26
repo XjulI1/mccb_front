@@ -33,18 +33,33 @@
 
     components: { draggable },
 
+    watch: {
+      operation () {
+        this.dateOperation = this.generateDataOperationVariables()
+        this.css = this.generateCssVariables()
+      }
+    },
+
     data () {
       return {
-        dateOperation: new Date(this.operation.DateOp).toLocaleDateString(),
-        css: {
-          category: this.operation.IDcat === 0 ? 'noCategory' : '',
-          montant: this.operation.MontantOp > 0 ? 'montantIn' : 'montantOut'
-        },
+        dateOperation: this.generateDataOperationVariables(),
+        css: this.generateCssVariables(),
         checkBoxID: 'checkboxOperationID-' + this.operation.IDop
       }
     },
 
     methods: {
+      generateCssVariables () {
+        return {
+          category: this.operation.IDcat === 0 ? 'noCategory' : '',
+          montant: this.operation.MontantOp > 0 ? 'montantIn' : 'montantOut'
+        }
+      },
+
+      generateDataOperationVariables () {
+        return new Date(this.operation.DateOp).toLocaleDateString()
+      },
+
       updateCheckOp () {
         this.$store.dispatch('updateOperation', this.operation)
       },
