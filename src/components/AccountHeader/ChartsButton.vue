@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-secondary disabled new-operation-button" v-on:click="searchOperation">
+  <button class="btn btn-secondary new-operation-button" v-on:click="goToStats">
     <font-awesome-icon icon="chart-pie"/>
   </button>
 </template>
@@ -9,7 +9,8 @@
     name: 'ChartsButton',
 
     methods: {
-      searchOperation () {
+      goToStats () {
+        this.$router.push('stats')
       }
     }
   }

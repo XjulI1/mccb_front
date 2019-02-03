@@ -7,6 +7,8 @@ import EditOperation from '@/views/EditOperation'
 
 import RecurrOperation from '@/views/RecurrOperation'
 
+import Stats from '@/views/Stats'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,5 +29,9 @@ export default new Router({
       name: 'Opérations récurrentes',
       component: RecurrOperation
     }]
+  }, {
+    path: '/stats',
+    name: 'Stats',
+    component: Stats
   }]
 })
