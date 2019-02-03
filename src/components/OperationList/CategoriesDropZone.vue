@@ -8,7 +8,7 @@
                  :options="{group: {name: 'category', put: ['operation']}}"
                  @add="addNewOperation">
         <div :class="$store.state.display.actual_drag_cat === category.IDcat ? 'actual-drag-cat' : ''">
-          <b>{{category.Nom}}</b>
+          <b v-html="category.Nom"></b>
         </div>
       </draggable>
     </div>

@@ -5,7 +5,7 @@
       <compte-list/>
       <navbar/>
     </div>
-    <router-view></router-view>
+    <router-view class="right-panel"></router-view>
   </div>
 </template>
 
@@ -50,6 +50,11 @@
     .left-panel {
       width: 35%;
       position: fixed;
+    }
+
+    .right-panel {
+      width: 65%;
+      margin-left: 35%;
     }
   }
 </style>

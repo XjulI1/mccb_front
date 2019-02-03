@@ -29,10 +29,5 @@
 </script>
 
 <style scoped>
-  @media screen and (min-width: 768px) {
-    .operation-list {
-      width: 65%;
-      margin-left: 35%;
-    }
-  }
+
 </style>

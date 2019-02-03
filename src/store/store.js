@@ -7,6 +7,7 @@ import User from './user.js'
 import Category from './category.js'
 import Operation from './operation.js'
 import Dispay from './display'
+import Stats from './stats'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
     user: User,
     category: Category,
     operation: Operation,
-    display: Dispay
+    display: Dispay,
+    stats: Stats
   },
   state: {
     activeAccount: {},
