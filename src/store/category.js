@@ -5,7 +5,17 @@ export default {
   state: {
     list: []
   },
-  getters: {},
+  getters: {
+    getCategoryName (state) {
+      return (IDcat) => {
+        return state.list.filter((categorie) => {
+          if (parseInt(categorie.IDcat) === parseInt(IDcat)) {
+            return categorie
+          }
+        })
+      }
+    }
+  },
   mutations: {
     setCategoryList (state, list) {
       state.list = list

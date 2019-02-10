@@ -8,9 +8,19 @@ export default {
     negativeMonth: 0,
     currentMonth: (new Date()).getMonth() + 1,
     currentYear: (new Date()).getFullYear(),
-    negativeByAccount: {}
+    negativeByAccount: {},
+    categoriesTotal: []
   },
-  getters: {},
+  getters: {
+    getCategoriesTotalForHighchartPie (state, getters) {
+      return state.categoriesTotal.map((categorie) => {
+        return {
+          name: getters.getCategoryName(categorie.IDcat)[0].Nom,
+          y: categorie.TotalMonth * -1
+        }
+      })
+    }
+  },
   mutations: {
     setNegativeMonth (state, sum) {
       state.negativeMonth = sum
@@ -26,6 +36,10 @@ export default {
 
     setCurrentMonth (state, newMonth) {
       state.currentMonth = newMonth
+    },
+
+    setCategoriesForMonth (state, categoriesList) {
+      state.categoriesTotal = categoriesList
     }
   },
   actions: {
@@ -48,16 +62,29 @@ export default {
       })
     },
 
+    fetchSumCategoriesByUserByMonth (context) {
+      let urlParams = '?userID=' + this.state.user.id + '&monthNumber=' + this.state.stats.currentMonth + '&yearNumber=' + this.state.stats.currentYear
+
+      context.dispatch('fetchCategoryList')
+
+      axios.get(config.API_URL + '/api/Operations/sumCategoriesByUserByMonth' + urlParams)
+        .then((response) => {
+          context.commit('setCategoriesForMonth', response.data.results)
+        })
+    },
+
     changeStatsCurrentYear (context, newYear) {
       context.commit('setCurrentYear', newYear)
 
       context.dispatch('fetchSumByUserByMonth')
+      context.dispatch('fetchSumCategoriesByUserByMonth')
     },
 
     changeStatsCurrentMonth (context, newMonth) {
       context.commit('setCurrentMonth', newMonth)
 
       context.dispatch('fetchSumByUserByMonth')
+      context.dispatch('fetchSumCategoriesByUserByMonth')
     }
   }
 }

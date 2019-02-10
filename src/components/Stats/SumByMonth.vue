@@ -71,6 +71,12 @@
       }
     },
 
+    created () {
+      if (this.$store.state.user.id) {
+        this.$store.dispatch('fetchSumByUserByMonth')
+      }
+    },
+
     methods: {
       numberDaysForCurrentMonth () {
         const currentDate = new Date()
