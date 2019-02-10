@@ -18,8 +18,14 @@ export default {
 
     pushNewNegativeAccount (state, accountValues) {
       Vue.set(state.negativeByAccount, accountValues.IDcompte, accountValues.total)
+    },
 
-      // state.negativeByAccount[accountValues.IDcompte] = accountValues.total
+    setCurrentYear (state, newYear) {
+      state.currentYear = newYear
+    },
+
+    setCurrentMonth (state, newMonth) {
+      state.currentMonth = newMonth
     }
   },
   actions: {
@@ -40,6 +46,18 @@ export default {
             })
           })
       })
+    },
+
+    changeStatsCurrentYear (context, newYear) {
+      context.commit('setCurrentYear', newYear)
+
+      context.dispatch('fetchSumByUserByMonth')
+    },
+
+    changeStatsCurrentMonth (context, newMonth) {
+      context.commit('setCurrentMonth', newMonth)
+
+      context.dispatch('fetchSumByUserByMonth')
     }
   }
 }
