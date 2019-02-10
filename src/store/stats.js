@@ -1,12 +1,14 @@
+import Vue from 'vue'
+
 import axios from 'axios/index'
 import config from '@/config'
 
 export default {
   state: {
     negativeMonth: 0,
-    negativeMonthFavorite: 0,
     currentMonth: (new Date()).getMonth() + 1,
-    currentYear: (new Date()).getFullYear()
+    currentYear: (new Date()).getFullYear(),
+    negativeByAccount: {}
   },
   getters: {},
   mutations: {
@@ -14,8 +16,10 @@ export default {
       state.negativeMonth = sum
     },
 
-    setNegativeMonthFavorite (state, sum) {
-      state.negativeMonthFavorite = sum
+    pushNewNegativeAccount (state, accountValues) {
+      Vue.set(state.negativeByAccount, accountValues.IDcompte, accountValues.total)
+
+      // state.negativeByAccount[accountValues.IDcompte] = accountValues.total
     }
   },
   actions: {
@@ -27,10 +31,15 @@ export default {
           context.commit('setNegativeMonth', response.data.results[0].MonthNegative)
         })
 
-      axios.get(config.API_URL + '/api/Operations/sumByUserByMonth' + urlParams + '&IDCompte=' + this.state.user.favoris)
-        .then((response) => {
-          context.commit('setNegativeMonthFavorite', response.data.results[0].MonthNegative)
-        })
+      this.getters.availableCompte.forEach((account) => {
+        axios.get(config.API_URL + '/api/Operations/sumByUserByMonth' + urlParams + '&IDCompte=' + account.IDcompte)
+          .then((response) => {
+            context.commit('pushNewNegativeAccount', {
+              IDcompte: account.IDcompte,
+              total: response.data.results[0].MonthNegative
+            })
+          })
+      })
     }
   }
 }

@@ -63,6 +63,16 @@ export default new Vuex.Store({
         acc += account.solde
         return Math.round(acc * 100) / 100
       }, getters.totalAvailable)
+    },
+
+    getAccountName (state) {
+      return (IDcompte) => {
+        return state.accountList.filter((account) => {
+          if (account.IDcompte === parseInt(IDcompte)) {
+            return account
+          }
+        })
+      }
     }
   },
   mutations: {

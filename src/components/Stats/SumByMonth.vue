@@ -3,25 +3,30 @@
     Total ce mois : <b>{{$store.state.stats.negativeMonth}}{{$store.state.currency}}</b>
     <br>
     <br>
-    Total N26 : <b>{{$store.state.stats.negativeMonthFavorite}}{{$store.state.currency}}</b>
-    <br>
-    Par jour : <b>{{Math.round($store.state.stats.negativeMonthFavorite / (new Date().getDate())) *
-    -1}}{{$store.state.currency}}</b>
+    <div v-for="(accountTotal, IDcompte) in $store.state.stats.negativeByAccount" v-bind:key="IDcompte"
+         v-if="accountTotal">
+      {{$store.getters.getAccountName(IDcompte)[0].NomCompte}} :
+      <b>{{accountTotal}} {{$store.state.currency}}</b>
+      <div class="parjour">
+        par jour :
+        {{Math.round(accountTotal / (new Date()).getDate() * -1)}} {{$store.state.currency}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'SumByMonth',
 
     computed: {
-      ...mapState({ userID: state => state.user.id })
+      ...mapGetters(['availableCompte'])
     },
 
     watch: {
-      userID () {
+      availableCompte () {
         this.$store.dispatch('fetchSumByUserByMonth')
       }
     },
@@ -30,16 +35,14 @@
       return {}
     },
 
-    created () {
-      if (this.userID) {
-        this.$store.dispatch('fetchSumByUserByMonth')
-      }
-    },
-
     methods: {}
   }
 </script>
 
 <style scoped>
+  .parjour {
+    margin-left: 4%;
+    margin-bottom: 10px;
+  }
 
 </style>

@@ -29,5 +29,7 @@
 </script>
 
 <style scoped>
-
+  .operation-list {
+    width: 100%
+  }
 </style>
