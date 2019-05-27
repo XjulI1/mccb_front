@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-warning disabled new-operation-button" v-on:click="openAllAccount">
+  <button class="btn btn-warning new-operation-button" v-on:click="openAllAccount">
     <font-awesome-icon icon="list"/>
   </button>
 </template>

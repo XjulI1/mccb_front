@@ -70,16 +70,21 @@
 <style lang="scss" scoped>
   @import '@/global.scss';
 
+  .compte-list {
+    position: fixed;
+    z-index: 10;
+    width: 35%;
+    top: $header-account-height;
+    height: calc(100% - 40px - 70px);
+    overflow: auto;
+  }
+
   @media screen and (max-width: 767px) {
     .mask-list {
       display: none;
     }
 
     .compte-list {
-      position: fixed;
-      z-index: 1000;
-      top: $header-account-height;
-      height: calc(100% - 40px - 70px);
       background-color: rgba(242, 242, 242, 0.95);
       width: 100%;
       padding-top: 5px;

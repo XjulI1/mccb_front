@@ -27,16 +27,18 @@
   .navbar {
     padding: 0;
 
+    height: $navbar-height;
+    width: 35%;
+    background-color: lightgrey;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: inline;
+    text-align: center;
+    z-index: 100;
+
     @media screen and (max-width: 768px) {
-      height: $navbar-height;
       width: 100%;
-      background-color: lightgrey;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      display: inline;
-      text-align: center;
-      z-index: 10;
     }
   }
 </style>
