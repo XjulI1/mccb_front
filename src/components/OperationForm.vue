@@ -2,7 +2,7 @@
   <div class="operation-form" v-if="operation" @keypress.enter="updateOperation">
     <input id="operation-name" type="text" class="form-control" placeholder="Titre" v-model="operation.NomOp"/>
     <input type="number" class="form-control" :class="montantClass()" placeholder="Montant"
-           v-model="operation.MontantOp"/>
+           v-model="operation.MontantOp" @blur="blurMontantOp"/>
     <input type="date" class="form-control" placeholder="Date" v-model="operation.DateOp"/>
 
     <select class="form-control select-category" v-model="operation.IDcat">
@@ -33,16 +33,6 @@
     name: 'OperationForm',
     props: ['operation'],
 
-    watch: {
-      'operation.MontantOp' (newValue) {
-        this.operation.MontantOp = parseFloat(newValue)
-
-        if (newValue > 0 && !this.montantOpIsPositive) {
-          this.operation.MontantOp *= -1
-        }
-      }
-    },
-
     data () {
       return {
         montantOpIsPositive: false
@@ -60,6 +50,14 @@
     },
 
     methods: {
+      blurMontantOp (event) {
+        this.operation.MontantOp = parseFloat(event.target.value)
+
+        if (this.operation.MontantOp > 0 && !this.montantOpIsPositive) {
+          this.operation.MontantOp *= -1
+        }
+      },
+
       montantClass () {
         return this.montantOpIsPositive ? 'montant-positif' : 'montant-negatif'
       },
