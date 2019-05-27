@@ -4,9 +4,11 @@
       <div class="col-1">
         <input type="checkbox" :id="checkBoxID" v-model="operation.CheckOp" @change="updateCheckOp"/>
       </div>
-      <draggable class="col-7" :class="css.category"
-                 @start="startDrag" @end="endDrag"
-                 :options="{group:{name: 'operation', pull: 'clone', put: ['false'] }}"
+      <draggable class="col-7"
+                 :class="css.category"
+                 @start="startDrag"
+                 @end="endDrag"
+                 :group="{name: 'operation', pull: 'clone', put: ['false'] }"
                  :data-idcat="operation.IDcat">
         <label :for="checkBoxID" :data-id="operation.IDop">
           {{operation.NomOp}}

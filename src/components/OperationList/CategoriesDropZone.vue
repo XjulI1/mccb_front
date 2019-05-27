@@ -3,10 +3,11 @@
     <div class="category-container">
       <draggable class="category"
                  v-for="category in $store.state.category.list "
-                 v-bind:key="'category-' + category.IDcat"
+                 :key="'category-' + category.IDcat"
                  :data-id="category.IDcat"
-                 :options="{group: {name: 'category', put: ['operation']}}"
-                 @add="addNewOperation">
+                 :group="{name: 'category', put: ['operation']}"
+                 @add="addNewOperation"
+      >
         <div :class="$store.state.display.actual_drag_cat === category.IDcat ? 'actual-drag-cat' : ''">
           <b v-html="category.Nom"></b>
         </div>
