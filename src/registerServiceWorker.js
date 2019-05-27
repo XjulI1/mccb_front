@@ -15,6 +15,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated () {
       console.log('New content is available; please refresh.')
+      document.querySelector('.new-version').style.display = 'block'
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')

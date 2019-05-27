@@ -9,6 +9,7 @@
       <router-view class="right-panel" :class="{'mask-panel' : $store.state.display.account_list}"></router-view>
     </div>
     <navbar/>
+    <new-version/>
   </div>
 </template>
 
@@ -17,11 +18,12 @@
   import CompteList from '@/components/CompteList'
   import AccountHeader from '@/components/AccountHeader'
   import TimeSeriesEvolutionSoldes from './components/Stats/TimeSeriesEvolutionSoldes'
+  import NewVersion from './components/NewVersion'
 
   export default {
     name: 'App',
 
-    components: { TimeSeriesEvolutionSoldes, CompteList, AccountHeader, Navbar },
+    components: { NewVersion, TimeSeriesEvolutionSoldes, CompteList, AccountHeader, Navbar },
 
     created () {
       this.$store.dispatch('initialState')
