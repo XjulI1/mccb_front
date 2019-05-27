@@ -29,7 +29,7 @@
 
     height: $navbar-height;
     width: 35%;
-    background-color: lightgrey;
+    background-color: white;
     position: fixed;
     bottom: 0;
     left: 0;

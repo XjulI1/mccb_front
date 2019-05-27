@@ -1,5 +1,5 @@
 <template>
-  <div class="compte-list" :class="$store.state.display.account_list ? '' : 'mask-list'">
+  <div class="compte-list">
     <compte :account-informations="account" v-for="account in $store.getters.availableCompte"
             v-bind:key="'account-' + account.IDcompte" fa_icon="check"/>
     <hr>
@@ -67,27 +67,4 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  @import '@/global.scss';
-
-  .compte-list {
-    position: fixed;
-    z-index: 10;
-    width: 35%;
-    top: $header-account-height;
-    height: calc(100% - 40px - 70px);
-    overflow: auto;
-  }
-
-  @media screen and (max-width: 767px) {
-    .mask-list {
-      display: none;
-    }
-
-    .compte-list {
-      background-color: rgba(242, 242, 242, 0.95);
-      width: 100%;
-      padding-top: 5px;
-    }
-  }
-</style>
+<style lang="scss" scoped></style>

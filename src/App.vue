@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <account-header/>
-    <div class="left-panel">
-      <compte-list/>
-      <navbar/>
+    <div class="container-flex">
+      <div class="left-panel" :class="{'mask-panel' : $store.state.display.account_list}">
+        <compte-list/>
+        <TimeSeriesEvolutionSoldes/>
+      </div>
+      <router-view class="right-panel" :class="{'mask-panel' : !$store.state.display.account_list}"></router-view>
     </div>
-    <router-view class="right-panel"></router-view>
+    <navbar/>
   </div>
 </template>
 
@@ -13,11 +16,12 @@
   import Navbar from '@/components/Navbar'
   import CompteList from '@/components/CompteList'
   import AccountHeader from '@/components/AccountHeader'
+  import TimeSeriesEvolutionSoldes from './components/Stats/TimeSeriesEvolutionSoldes'
 
   export default {
     name: 'App',
 
-    components: { CompteList, AccountHeader, Navbar },
+    components: { TimeSeriesEvolutionSoldes, CompteList, AccountHeader, Navbar },
 
     created () {
       this.$store.dispatch('initialState')
@@ -33,7 +37,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    margin-top: $header-account-height + 5;
+    margin-top: $header-account-height;
   }
 
   .row {
@@ -46,15 +50,39 @@
     padding: 0 !important
   }
 
-  @media screen and (min-width: 768px) {
+  .left-panel {
+    margin-top: 5px;
+    width: 35%;
+  }
+
+  .right-panel {
+    margin-top: 5px;
+    width: 65%;
+  }
+
+  .container-flex {
+    display: flex;
+  }
+
+  @media screen and (max-width: 767px) {
     .left-panel {
-      width: 35%;
-      position: fixed;
+      margin-top: 0;
+      background-color: rgba(242, 242, 242, 0.95);
+      width: 100%;
+      padding-top: 3px;
+      margin-bottom: $navbar-height;
     }
 
     .right-panel {
-      width: 65%;
-      margin-left: 35%;
+      width: 100%;
+    }
+
+    .right-panel.mask-panel {
+      display: none;
+    }
+
+    .left-panel.mask-panel {
+      display: none;
     }
   }
 </style>
