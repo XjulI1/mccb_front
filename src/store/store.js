@@ -123,7 +123,10 @@ export default new Vuex.Store({
   },
   actions: {
     initialState () {
-      this.dispatch('fetchUser', 1)
+    },
+
+    fetchUserByID (context, userID) {
+      this.dispatch('fetchUser', userID)
         .then(() => {
           this.dispatch('fetchActiveAccount', this.state.user.favoris)
         })
