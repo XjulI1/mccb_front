@@ -29,8 +29,12 @@
             code: value
           }).then((response) => {
             if (response.status === 200) {
-              this.$store.dispatch('fetchUserByID', response.data.userId)
-              this.$cookies.set('userToken', response.data.id)
+              this.$store.dispatch('saveUserToken', response.data.id)
+              this.$store.dispatch('fetchUserByIDAndActiveAccount', response.data.userId)
+
+              this.$cookies.set('userToken', response.data.id, response.data.ttl)
+              this.$cookies.set('userID', response.data.userId, response.data.ttl)
+
               this.$router.push('/')
             }
           })

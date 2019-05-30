@@ -14,6 +14,9 @@
 </template>
 
 <script>
+  import axios from 'axios'
+  import config from '@/config'
+
   import Navbar from '@/components/Navbar'
   import CompteList from '@/components/CompteList'
   import AccountHeader from '@/components/AccountHeader'
@@ -24,6 +27,28 @@
     name: 'App',
 
     components: { NewVersion, TimeSeriesEvolutionSoldes, CompteList, AccountHeader, Navbar },
+
+    beforeCreate () {
+      const userToken = this.$cookies.get('userToken')
+      const userID = this.$cookies.get('userID')
+
+      if (userToken === null) {
+        this.$router.push('/login')
+      } else {
+        axios.get(config.API_URL + '/api/users/' + userID + '/exists', {
+          params: {
+            access_token: userToken
+          }
+        }).then(() => {
+          this.$store.dispatch('saveUserToken', userToken)
+          this.$store.dispatch('fetchUserByIDAndActiveAccount', userID)
+        }).catch((err) => {
+          if (err.response.status === 401) {
+            this.$router.push('/login')
+          }
+        })
+      }
+    },
 
     created () {
       this.$store.dispatch('initialState')

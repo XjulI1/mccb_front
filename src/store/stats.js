@@ -44,33 +44,48 @@ export default {
   },
   actions: {
     fetchSumByUserByMonth (context) {
-      let urlParams = '?userID=' + this.state.user.id + '&monthNumber=' + this.state.stats.currentMonth + '&yearNumber=' + this.state.stats.currentYear
-
-      axios.get(config.API_URL + '/api/Operations/sumByUserByMonth' + urlParams)
-        .then((response) => {
-          context.commit('setNegativeMonth', response.data.results[0].MonthNegative)
-        })
+      axios.get(config.API_URL + '/api/Operations/sumByUserByMonth', {
+        params: {
+          access_token: context.rootState.user.token,
+          userID: this.state.user.id,
+          monthNumber: this.state.stats.currentMonth,
+          yearNumber: this.state.stats.currentYear
+        }
+      }).then((response) => {
+        context.commit('setNegativeMonth', response.data.results[0].MonthNegative)
+      })
 
       this.getters.availableCompte.forEach((account) => {
-        axios.get(config.API_URL + '/api/Operations/sumByUserByMonth' + urlParams + '&IDCompte=' + account.IDcompte)
-          .then((response) => {
-            context.commit('pushNewNegativeAccount', {
-              IDcompte: account.IDcompte,
-              total: response.data.results[0].MonthNegative
-            })
+        axios.get(config.API_URL + '/api/Operations/sumByUserByMonth', {
+          params: {
+            access_token: context.rootState.user.token,
+            userID: this.state.user.id,
+            monthNumber: this.state.stats.currentMonth,
+            yearNumber: this.state.stats.currentYear,
+            IDCompte: account.IDcompte
+          }
+        }).then((response) => {
+          context.commit('pushNewNegativeAccount', {
+            IDcompte: account.IDcompte,
+            total: response.data.results[0].MonthNegative
           })
+        })
       })
     },
 
     fetchSumCategoriesByUserByMonth (context) {
-      let urlParams = '?userID=' + this.state.user.id + '&monthNumber=' + this.state.stats.currentMonth + '&yearNumber=' + this.state.stats.currentYear
-
       context.dispatch('fetchCategoryList')
 
-      axios.get(config.API_URL + '/api/Operations/sumCategoriesByUserByMonth' + urlParams)
-        .then((response) => {
-          context.commit('setCategoriesForMonth', response.data.results)
-        })
+      axios.get(config.API_URL + '/api/Operations/sumCategoriesByUserByMonth', {
+        params: {
+          access_token: context.rootState.user.token,
+          userID: this.state.user.id,
+          monthNumber: this.state.stats.currentMonth,
+          yearNumber: this.state.stats.currentYear
+        }
+      }).then((response) => {
+        context.commit('setCategoriesForMonth', response.data.results)
+      })
     },
 
     changeStatsCurrentYear (context, newYear) {

@@ -1,6 +1,4 @@
 import Vue from 'vue'
-import VueCookies from 'vue-cookies'
-import store from '@/store/store'
 
 import Router from 'vue-router'
 
@@ -20,17 +18,6 @@ export default new Router({
     path: '/',
     name: 'Home',
     component: Home,
-    beforeEnter: (to, from, next) => {
-      const cookieValue = VueCookies.get('userToken')
-
-      if (cookieValue === null) {
-        next('/login')
-      } else {
-        store.dispatch('fetchUserByID', cookieValue)
-      }
-
-      next()
-    },
     children: [{
       path: '/newOperation',
       name: 'Nouvelle opération',

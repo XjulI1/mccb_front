@@ -27,15 +27,19 @@ export default {
   actions: {
     fetchOperationsOfActiveAccount (context) {
       let filter = {
-        'where': { 'IDcompte': this.state.activeAccount.IDcompte },
-        'order': 'CheckOp ASC, DateOp DESC',
-        'limit': 25
+        where: { IDcompte: this.state.activeAccount.IDcompte },
+        order: 'CheckOp ASC, DateOp DESC',
+        limit: 25
       }
 
-      axios.get(config.API_URL + '/api/Operations/?filter=' + JSON.stringify(filter))
-        .then((response) => {
-          context.commit('setOperationsOfActiveAccount', response.data)
-        })
+      axios.get(config.API_URL + '/api/Operations', {
+        params: {
+          access_token: context.rootState.user.token,
+          filter
+        }
+      }).then((response) => {
+        context.commit('setOperationsOfActiveAccount', response.data)
+      })
     },
 
     updateOperation (context, operation) {
@@ -61,7 +65,12 @@ export default {
         order: 'DernierDateOpRecu ASC, NomOpRecu ASC'
       }
 
-      axios.get(config.API_URL + '/api/OperationRecurrentes/?filter=' + JSON.stringify(filter))
+      axios.get(config.API_URL + '/api/OperationRecurrentes', {
+        params: {
+          access_token: context.rootState.user.token,
+          filter
+        }
+      })
         .then((response) => {
           context.commit('setOperationsOfActiveAccount', response.data)
         })

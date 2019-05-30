@@ -18,23 +18,27 @@
 
     watch: {
       userID (value) {
-        axios.get(config.API_URL + '/api/stats/evolutionSolde?userID=' + value)
-          .then((response) => {
-            let sum = response.data.results.soldeTotal
-            this.total = response.data.results.total
-              .map((data) => {
-                sum += data.montant
-                return [new Date(data.date), Math.round(sum * 100) / 100]
-              })
+        axios.get(config.API_URL + '/api/stats/evolutionSolde', {
+          params: {
+            access_token: this.$store.state.user.token,
+            userID: value
+          }
+        }).then((response) => {
+          let sum = response.data.results.soldeTotal
+          this.total = response.data.results.total
+            .map((data) => {
+              sum += data.montant
+              return [new Date(data.date), Math.round(sum * 100) / 100]
+            })
 
-            sum = response.data.results.soldeDispo
-            this.dispo = response.data.results.dispo
-              .map((data) => {
-                sum += data.montant
-                return [new Date(data.date), Math.round(sum * 100) / 100]
-              })
-            this.buildChart()
-          })
+          sum = response.data.results.soldeDispo
+          this.dispo = response.data.results.dispo
+            .map((data) => {
+              sum += data.montant
+              return [new Date(data.date), Math.round(sum * 100) / 100]
+            })
+          this.buildChart()
+        })
       }
     },
 

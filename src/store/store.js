@@ -125,7 +125,7 @@ export default new Vuex.Store({
     initialState () {
     },
 
-    fetchUserByID (context, userID) {
+    fetchUserByIDAndActiveAccount (context, userID) {
       this.dispatch('fetchUser', userID)
         .then(() => {
           this.dispatch('fetchActiveAccount', this.state.user.favoris)
@@ -133,39 +133,54 @@ export default new Vuex.Store({
     },
 
     fetchActiveAccount (context, accountID) {
-      axios.get(config.API_URL + '/api/Comptes/' + accountID)
-        .then((response) => {
-          context.commit('setActiveAccount', response.data)
+      axios.get(config.API_URL + '/api/Comptes/' + accountID, {
+        params: {
+          access_token: context.rootState.user.token
+        }
+      }).then((response) => {
+        context.commit('setActiveAccount', response.data)
 
-          this.dispatch('fetchOperationsOfActiveAccount')
-          this.dispatch('fetchSumForACompte')
-        })
+        this.dispatch('fetchOperationsOfActiveAccount')
+        this.dispatch('fetchSumForACompte')
+      })
     },
 
     fetchAccountList (context) {
       let filter = { where: { IDuser: this.state.user.id, visible: true }, order: 'NomCompte ASC' }
 
-      axios.get(config.API_URL + '/api/Comptes?filter=' + JSON.stringify(filter))
-        .then((response) => {
-          context.commit('setAccountList', response.data)
+      axios.get(config.API_URL + '/api/Comptes', {
+        params: {
+          access_token: context.rootState.user.token,
+          filter
+        }
+      }).then((response) => {
+        context.commit('setAccountList', response.data)
 
-          this.dispatch('sumAllCompteForUser')
-        })
+        this.dispatch('sumAllCompteForUser')
+      })
     },
 
     fetchSumForACompte (context) {
-      axios.get(config.API_URL + '/api/Operations/sumForACompte?id=' + this.state.activeAccount.IDcompte)
-        .then((response) => {
-          context.commit('setCheckedSolde', response.data.results.TotalChecked)
-          context.commit('setNotCheckedSolde', response.data.results.TotalNotChecked)
-        })
+      axios.get(config.API_URL + '/api/Operations/sumForACompte', {
+        params: {
+          access_token: context.rootState.user.token,
+          id: this.state.activeAccount.IDcompte
+        }
+      }).then((response) => {
+        context.commit('setCheckedSolde', response.data.results.TotalChecked)
+        context.commit('setNotCheckedSolde', response.data.results.TotalNotChecked)
+      })
     },
 
     sumAllCompteForUser (context) {
-      axios.get(config.API_URL + '/api/Operations/sumAllCompteForUser?userID=' + this.state.user.id)
-        .then((response) => {
-          context.commit('setSumAllCompteForUser', response.data.results)
-        })
+      axios.get(config.API_URL + '/api/Operations/sumAllCompteForUser', {
+        params: {
+          access_token: context.rootState.user.token,
+          userID: this.state.user.id
+        }
+      }).then((response) => {
+        context.commit('setSumAllCompteForUser', response.data.results)
+      })
     }
   }
 })
