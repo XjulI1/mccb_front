@@ -42,18 +42,24 @@ export default {
       })
     },
 
-    updateOperation (context, operation) {
-      axios.patch(config.API_URL + '/api/Operations', operation)
-        .then(() => {
-          this.dispatch('fetchActiveAccount', operation.IDcompte)
-        })
+    updateOperation: function (context, operation) {
+      axios.patch(config.API_URL + '/api/Operations', operation, {
+        params: {
+          access_token: context.rootState.user.token
+        }
+      }).then(() => {
+        this.dispatch('fetchActiveAccount', operation.IDcompte)
+      })
     },
 
     deleteOperation (context, operation) {
-      axios.delete(config.API_URL + '/api/Operations/' + operation.IDop)
-        .then(() => {
-          this.dispatch('fetchActiveAccount', operation.IDcompte)
-        })
+      axios.delete(config.API_URL + '/api/Operations/' + operation.IDop, {
+        params: {
+          access_token: context.rootState.user.token
+        }
+      }).then(() => {
+        this.dispatch('fetchActiveAccount', operation.IDcompte)
+      })
     },
 
     fetchRecurrOperation (context) {
