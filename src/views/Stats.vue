@@ -16,6 +16,7 @@
     },
 
     created () {
+      this.$store.commit('setActiveAccount', { NomCompte: 'Stats' })
     },
 
     methods: {}

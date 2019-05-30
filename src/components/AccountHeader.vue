@@ -9,7 +9,7 @@
           <div>
             {{nomCompte}}
           </div>
-          <div :class="nomCompte.includes('récurrentes') ? 'no-total' : ''">
+          <div :class="{'no-total' : disabledTotal}">
             {{($store.state.activeAccount.soldeNotChecked || 0).toLocaleString()}} {{$store.state.currency}} -
             [{{($store.state.activeAccount.soldeChecked || 0).toLocaleString()}}
             {{$store.state.currency}}]
@@ -33,7 +33,13 @@
     name: 'AccountHeader',
     components: { ChartsButton, SearchButton },
 
-    computed: { ...mapState({ activeAccount: 'activeAccount' }) },
+    computed: {
+      ...mapState({ activeAccount: 'activeAccount' }),
+      disabledTotal () {
+        console.log(this.$route.meta.totalHeader)
+        return this.$route.meta.disabledTotalHeader === undefined ? false : this.$route.meta.disabledTotalHeader
+      }
+    },
 
     watch: {
       activeAccount (value) {

@@ -10,6 +10,7 @@ import RecurrOperation from '@/views/RecurrOperation'
 
 import Stats from '@/views/Stats'
 import Login from '@/views/Login'
+import Config from '@/views/Config'
 
 Vue.use(Router)
 
@@ -29,15 +30,31 @@ export default new Router({
     }, {
       path: '/recurrOperation',
       name: 'Opérations récurrentes',
-      component: RecurrOperation
+      component: RecurrOperation,
+      meta: {
+        disabledTotalHeader: true
+      }
     }]
   }, {
     path: '/stats',
     name: 'Stats',
-    component: Stats
+    component: Stats,
+    meta: {
+      disabledTotalHeader: true
+    }
   }, {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      disabledTotalHeader: true
+    }
+  }, {
+    path: '/config',
+    name: 'Config',
+    component: Config,
+    meta: {
+      disabledTotalHeader: true
+    }
   }]
 })

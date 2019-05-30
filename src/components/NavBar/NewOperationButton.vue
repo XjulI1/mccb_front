@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary new-operation-button" v-on:click="addOperation">
+  <button class="btn btn-primary new-operation-button" v-on:click="addOperation" v-bind="{disabled}">
     <font-awesome-icon icon="plus"/>
   </button>
 </template>
@@ -7,6 +7,13 @@
 <script>
   export default {
     name: 'NewOperationButton',
+
+    computed: {
+      disabled () {
+        console.log(this.$route.meta.totalHeader)
+        return this.$route.meta.disabledTotalHeader === undefined ? false : this.$route.meta.disabledTotalHeader
+      }
+    },
 
     methods: {
       addOperation () {

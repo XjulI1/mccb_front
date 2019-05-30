@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-danger disabled new-operation-button" v-on:click="changeParams">
+  <button class="btn btn-danger new-operation-button" v-on:click="changeParams">
     <font-awesome-icon icon="cogs"/>
   </button>
 </template>
@@ -10,6 +10,7 @@
 
     methods: {
       changeParams () {
+        this.$router.push('/config')
       }
     }
   }
