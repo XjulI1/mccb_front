@@ -25,14 +25,15 @@
     watch: {
       code (value) {
         if (value.length === 6) {
-          axios.get(config.API_URL + '/api/login/checkCode?code=' + this.code)
-            .then((response) => {
-              if (response.data.results.code === '200') {
-                this.$store.dispatch('fetchUserByID', response.data.results.userID)
-                this.$cookies.set('userToken', response.data.results.userID)
-                this.$router.push('/')
-              }
-            })
+          axios.post(config.API_URL + '/api/users/login', {
+            code: value
+          }).then((response) => {
+            if (response.status === 200) {
+              this.$store.dispatch('fetchUserByID', response.data.userId)
+              this.$cookies.set('userToken', response.data.id)
+              this.$router.push('/')
+            }
+          })
         }
       }
     },
