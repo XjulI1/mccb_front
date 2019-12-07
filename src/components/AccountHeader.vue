@@ -36,7 +36,6 @@
     computed: {
       ...mapState({ activeAccount: 'activeAccount' }),
       disabledTotal () {
-        console.log(this.$route.meta.totalHeader)
         return this.$route.meta.disabledTotalHeader === undefined ? false : this.$route.meta.disabledTotalHeader
       }
     },

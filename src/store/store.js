@@ -129,6 +129,7 @@ export default new Vuex.Store({
       this.dispatch('fetchUser', userID)
         .then(() => {
           this.dispatch('fetchActiveAccount', this.state.user.favoris)
+          this.$store.dispatch('generateRecurringOperations')
         })
     },
 
@@ -180,6 +181,12 @@ export default new Vuex.Store({
         }
       }).then((response) => {
         context.commit('setSumAllCompteForUser', response.data.results)
+      })
+    },
+
+    generateRecurringOperations (context) {
+      axios.post(config.API_URL + '/api/OperationRecurrentes/autoGeneration?access_token=' + context.rootState.user.token, {
+        userID: this.state.user.id
       })
     }
   }

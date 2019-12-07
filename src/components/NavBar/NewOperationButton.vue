@@ -10,7 +10,6 @@
 
     computed: {
       disabled () {
-        console.log(this.$route.meta.totalHeader)
         return this.$route.meta.disabledTotalHeader === undefined ? false : this.$route.meta.disabledTotalHeader
       }
     },
