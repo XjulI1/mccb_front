@@ -129,7 +129,7 @@ export default new Vuex.Store({
       this.dispatch('fetchUser', userID)
         .then(() => {
           this.dispatch('fetchActiveAccount', this.state.user.favoris)
-          this.$store.dispatch('generateRecurringOperations')
+          this.dispatch('generateRecurringOperations')
         })
     },
 
