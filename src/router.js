@@ -3,8 +3,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/views/Home.vue'
-import NewOperation from '@/views/NewOperation'
-import EditOperation from '@/views/EditOperation'
+import NewOperation from '@/views/RouteOverTheContent/NewOperation'
+import EditOperation from '@/views/RouteOverTheContent/EditOperation'
 
 import RecurrOperation from '@/views/RecurrOperation'
 
@@ -27,14 +27,14 @@ export default new Router({
       path: '/editOperation/:id',
       name: 'Edition opération',
       component: EditOperation
-    }, {
-      path: '/recurrOperation',
-      name: 'Opérations récurrentes',
-      component: RecurrOperation,
-      meta: {
-        disabledTotalHeader: true
-      }
     }]
+  }, {
+    path: '/recurrOperation',
+    name: 'Opérations récurrentes',
+    component: RecurrOperation,
+    meta: {
+      disabledTotalHeader: true
+    }
   }, {
     path: '/stats',
     name: 'Stats',

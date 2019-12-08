@@ -12,7 +12,9 @@
 
   export default {
     name: 'RouteOverTheContent',
+
     components: { OperationForm },
+
     props: ['componentName', 'params'],
 
     methods: {

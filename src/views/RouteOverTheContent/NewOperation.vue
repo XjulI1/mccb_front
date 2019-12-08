@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import RouteOverTheContent from '../components/RouteOverTheContent'
+  import RouteOverTheContent from '@/components/RouteOverTheContent'
 
   export default {
     name: 'NewOperation',
