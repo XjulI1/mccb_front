@@ -39,7 +39,10 @@
     methods: {
       getAccountDetails () {
         if (!this.disableClick) {
-          this.$router.push('/')
+          if (this.$route.path !== '/') {
+            this.$router.push('/')
+          }
+
 
           this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
           this.$store.dispatch('toggleAccountList', false)

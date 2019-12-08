@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-info disabled new-operation-button" v-on:click="searchOperation">
+  <button class="btn btn-info new-operation-button" v-on:click="searchOperation">
     <font-awesome-icon icon="search"/>
   </button>
 </template>
@@ -10,6 +10,7 @@
 
     methods: {
       searchOperation () {
+        this.$router.push('search')
       }
     }
   }

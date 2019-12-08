@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import NewOperation from '@/views/RouteOverTheContent/NewOperation'
 import EditOperation from '@/views/RouteOverTheContent/EditOperation'
+import Search from '@/views/RouteOverTheContent/Search'
 
 import RecurrOperation from '@/views/RecurrOperation'
 
@@ -27,6 +28,10 @@ export default new Router({
       path: '/editOperation/:id',
       name: 'Edition opération',
       component: EditOperation
+    }, {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }]
   }, {
     path: '/recurrOperation',

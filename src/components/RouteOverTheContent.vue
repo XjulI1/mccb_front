@@ -9,11 +9,12 @@
 
 <script>
   import OperationForm from './OperationForm'
+  import Search from './Search'
 
   export default {
     name: 'RouteOverTheContent',
 
-    components: { OperationForm },
+    components: { OperationForm, Search },
 
     props: ['componentName', 'params'],
 
