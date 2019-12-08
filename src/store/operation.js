@@ -29,7 +29,7 @@ export default {
       let filter = {
         where: { IDcompte: this.state.activeAccount.IDcompte },
         order: 'CheckOp ASC, DateOp DESC',
-        limit: 25
+        limit: 35
       }
 
       axios.get(config.API_URL + '/api/Operations', {
@@ -80,6 +80,30 @@ export default {
         .then((response) => {
           context.commit('setOperationsOfActiveAccount', response.data)
         })
+    },
+
+    getSearchOperations (context, searchTerms) {
+      let filter = {
+        where: {
+          IDcompte: { inq: context.rootState.accountList.map((account) => account.IDcompte) },
+          or: [
+            { NomOp: { like: `%${searchTerms}%` } },
+            { MontantOp: { like: `%${searchTerms}%` } }
+          ]
+        },
+        order: 'DateOp DESC',
+        limit: 30
+      }
+
+      axios.get(config.API_URL + '/api/Operations', {
+        params: {
+          access_token: context.rootState.user.token,
+          filter
+        }
+      }).then((response) => {
+        context.commit('setActiveAccount', { NomCompte: 'Search' })
+        context.commit('setOperationsOfActiveAccount', response.data)
+      })
     }
   }
 }

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <input id="search-input" type="text" class="form-control" placeholder="Search terms" v-model="searchTerms"/>
+    <input ref="search-input" id="search-input" type="text" class="form-control" placeholder="Search terms"
+           v-model="searchTerms"
+           @keyup="search"/>
   </div>
 </template>
 
@@ -10,14 +12,26 @@
 
     data () {
       return {
-        searchTerms: ''
+        searchTerms: '',
+        timer: null
       }
     },
 
-    created () {
+    mounted () {
+      this.$refs['search-input'].focus()
     },
 
-    methods: {}
+    methods: {
+      search () {
+        if (this.timer) {
+          clearTimeout(this.timer)
+          this.timer = null
+        }
+        this.timer = setTimeout(() => {
+          this.$store.dispatch('getSearchOperations', this.searchTerms)
+        }, 200)
+      }
+    }
   }
 </script>
 
