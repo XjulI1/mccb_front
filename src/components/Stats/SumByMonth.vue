@@ -67,7 +67,7 @@
     data () {
       return {
         listMonth: [...Array(12).keys()],
-        listYear: [2017, 2018, 2019]
+        listYear: [2017, 2018, 2019, 2020]
       }
     },
 
