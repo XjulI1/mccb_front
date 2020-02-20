@@ -43,7 +43,6 @@
             this.$router.push('/')
           }
 
-
           this.$store.dispatch('fetchActiveAccount', this.accountInformations.IDcompte)
           this.$store.dispatch('toggleAccountList', false)
         }
