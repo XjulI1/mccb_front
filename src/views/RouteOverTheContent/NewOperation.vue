@@ -13,12 +13,12 @@
       return {
         params: {
           operation: {
-            'NomOp': '',
-            'MontantOp': 0,
-            'DateOp': new Date(),
-            'CheckOp': false,
-            'IDcompte': this.$store.state.activeAccount.IDcompte,
-            'IDcat': 0
+            NomOp: '',
+            MontantOp: 0,
+            DateOp: new Date(),
+            CheckOp: false,
+            IDcompte: this.$store.state.activeAccount.IDcompte,
+            IDcat: 0
           }
         }
       }

@@ -38,7 +38,7 @@
         const categoryID = event.target.dataset.id
         const operationID = event.item.dataset.id
 
-        let operation = this.$store.getters.operationFromCurrentList(operationID)
+        const operation = this.$store.getters.operationFromCurrentList(operationID)
 
         operation.IDcat = categoryID
 

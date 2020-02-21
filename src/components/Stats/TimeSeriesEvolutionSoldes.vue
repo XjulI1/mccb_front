@@ -51,7 +51,7 @@
 
     methods: {
       buildChart () {
-        let chart = Highcharts.chart(this.$el || this.$el.querySelector('.evolutionSoldes'), {
+        const chart = Highcharts.chart(this.$el || this.$el.querySelector('.evolutionSoldes'), {
           chart: {
             zoomType: 'x'
           },

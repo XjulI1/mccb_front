@@ -24,7 +24,7 @@ export default {
   actions: {
     fetchCategoryList (context) {
       if (this.state.category.list.length < 5) {
-        let filter = { where: { or: [{ IDuser: this.state.user.id }, { IDuser: 0 }] }, order: 'Nom ASC' }
+        const filter = { where: { or: [{ IDuser: this.state.user.id }, { IDuser: 0 }] }, order: 'Nom ASC' }
 
         axios.get(config.API_URL + '/api/Categories', {
           params: {

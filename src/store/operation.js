@@ -26,7 +26,7 @@ export default {
   },
   actions: {
     fetchOperationsOfActiveAccount (context) {
-      let filter = {
+      const filter = {
         where: { IDcompte: this.state.activeAccount.IDcompte },
         order: 'CheckOp ASC, DateOp DESC',
         limit: 35
@@ -66,7 +66,7 @@ export default {
       context.commit('setOperationsOfActiveAccount', {})
       context.commit('setActiveAccount', { NomCompte: 'Opérations récurrentes' })
 
-      let filter = {
+      const filter = {
         where: {},
         order: 'DernierDateOpRecu ASC, NomOpRecu ASC'
       }
@@ -83,7 +83,7 @@ export default {
     },
 
     getSearchOperations (context, searchTerms) {
-      let filter = {
+      const filter = {
         where: {
           IDcompte: { inq: context.rootState.accountList.map((account) => account.IDcompte) },
           or: [

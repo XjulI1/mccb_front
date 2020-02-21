@@ -50,7 +50,7 @@ export default new Vuex.Store({
     },
 
     totalAvailable (state, getters) {
-      let availableAndPorteFeuilleAccounts = getters.availableCompte.concat(getters.porteFeuilleCompte)
+      const availableAndPorteFeuilleAccounts = getters.availableCompte.concat(getters.porteFeuilleCompte)
 
       return availableAndPorteFeuilleAccounts.reduce((acc, account) => {
         acc += account.solde
@@ -108,10 +108,10 @@ export default new Vuex.Store({
 
     setSumAllCompteForUser (state, sumList) {
       state.accountList.forEach((account, index) => {
-        let sum = sumList.filter(sum => sum.IDCompte === account.IDcompte)
+        const sum = sumList.filter(sum => sum.IDCompte === account.IDcompte)
 
         if (sum[0]) {
-          let account = state.accountList[index]
+          const account = state.accountList[index]
 
           account.base_solde += sum[0].TotalChecked + (sum[0].TotalNotChecked || 0)
           account.base_solde = Math.round(account.base_solde * 100) / 100
@@ -147,7 +147,7 @@ export default new Vuex.Store({
     },
 
     fetchAccountList (context) {
-      let filter = { where: { IDuser: this.state.user.id, visible: true }, order: 'NomCompte ASC' }
+      const filter = { where: { IDuser: this.state.user.id, visible: true }, order: 'NomCompte ASC' }
 
       axios.get(config.API_URL + '/api/Comptes', {
         params: {
